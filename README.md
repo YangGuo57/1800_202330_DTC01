@@ -9,7 +9,7 @@ This browser based web application to ...
 
 List team members and/or short bio's here...
 
-- Hi, my name is Yang! I am so excited to start this project! Let's go Poober!
+- Hi, my name is Yang! I am so excited to start this project! Let's go Poober! Changes for conflict
 - Hi, my name is Patricia and I am excited to share with everyone my vision for a toilet-ful Vancouver!
 - Hi, my name is Shaun. I am passionate about the accessibility of public washrooms!
 
