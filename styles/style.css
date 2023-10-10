@@ -1,1 +1,7 @@
+button {
+    margin: 2px;
+}
 
+.container-fluid {
+    flex-wrap: nowrap !important;
+}
