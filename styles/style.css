@@ -1,3 +1,13 @@
+<<<<<<< HEAD
 main {
     height: 1080px;
 }
+=======
+button {
+    margin: 2px;
+}
+
+.container-fluid {
+    flex-wrap: nowrap !important;
+}
+>>>>>>> 271ef4ac31e5d6205b78187f28ea116e2c4a23ae
