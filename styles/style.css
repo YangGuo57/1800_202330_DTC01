@@ -1,7 +1,56 @@
+/* 
+Dark Blue: #071952
+Dark Teal: #088395
+Teal: #35A29F
+Lime: #F2F7A1
+ */
+
+/* NAV BAR */
+
+* {
+    margin: 0px;
+}
+
 button {
     margin: 2px;
 }
 
+.btn {
+    color: #F2F7A1;
+    background-color: #35A29F;
+    height: 50px;
+    margin: 10px;
+}
+
+.btn a {
+    text-decoration: none;
+    color: #F2F7A1;
+}
+
+.btn a:hover {
+    text-decoration: none;
+    color: #088395;
+    background-color: #F2F7A1;
+}
+
+.btn:hover {
+    text-decoration: none;
+    color: #088395;
+    background-color: #F2F7A1;
+}
+
 .container-fluid {
     flex-wrap: nowrap !important;
+    background-color: #088395;
+}
+
+.form-control {
+    background-color: #F2F7A1;
+    height: 50px;
+    margin: 10px;
+}
+
+nav {
+    background-color: #071952;
+    padding: 0px!important;
 }
