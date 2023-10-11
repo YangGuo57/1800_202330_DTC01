@@ -16,41 +16,59 @@ button {
 }
 
 .btn {
-    color: #F2F7A1;
-    background-color: #35A29F;
+    color: #DAFFFB;
+    background-color: #64CCC5;
     height: 50px;
     margin: 10px;
 }
 
 .btn a {
     text-decoration: none;
-    color: #F2F7A1;
+    color: #DAFFFB;
 }
 
 .btn a:hover {
     text-decoration: none;
     color: #088395;
-    background-color: #F2F7A1;
+    background-color: #DAFFFB;
 }
 
 .btn:hover {
     text-decoration: none;
     color: #088395;
-    background-color: #F2F7A1;
+    background-color: #DAFFFB;
 }
 
 .container-fluid {
     flex-wrap: nowrap !important;
-    background-color: #088395;
+    /* background-color: #64CCC5; */
 }
 
 .form-control {
-    background-color: #F2F7A1;
+    background-color: #DAFFFB;
     height: 50px;
     margin: 10px;
 }
 
-nav {
-    background-color: #071952;
+nav.navbar {
+    background-color: #176B87 !important;
     padding: 0px!important;
+}
+
+main div.bg-dark {
+    background-color: #04364A !important;
+}
+
+footer {
+    padding: 0px !important;
+    height: 10vh;
+    background-color: #176B87 !important;
+}
+
+footer a.material-icons {
+    font-size: 2rem;
+}
+
+main {
+    margin-bottom: 8vh;
 }
