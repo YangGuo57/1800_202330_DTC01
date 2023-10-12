@@ -16,10 +16,19 @@ button {
 }
 
 .btn {
-    color: #DAFFFB;
-    background-color: #64CCC5;
     height: 50px;
     margin: 10px;
+}
+
+nav .btn, footer .btn {
+    background-color: transparent;
+    border: none;
+    margin: 10px 0px;
+    color: #64CCC5;
+}
+
+.form-control {
+    margin: 10px 0px;
 }
 
 .btn a {
@@ -31,6 +40,23 @@ button {
     text-decoration: none;
     color: #088395;
     background-color: #DAFFFB;
+}
+
+
+.btn-outline-info {
+    color: #DAFFFB;
+    background-color: #64CCC5 !important;
+    margin: 10px;
+    font-weight: 700;
+    border-color: #64CCC5
+}
+
+.btn-outline-light {
+    color: #DAFFFB;
+    background-color: #176B87 !important;
+    border-color: #64CCC5;
+    margin: 10px;
+    font-weight: 700;
 }
 
 .btn:hover {
@@ -47,7 +73,8 @@ button {
 .form-control {
     background-color: #DAFFFB;
     height: 50px;
-    margin: 10px;
+    width: 250px;
+    border-radius: 50px;
 }
 
 nav.navbar {
@@ -66,9 +93,21 @@ footer {
 }
 
 footer a.material-icons {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 main {
     margin-bottom: 8vh;
+}
+
+.card {
+    background-color:#64CCC5 ;
+}
+
+.card-group {
+    background-color: #04364A !important;
+}
+
+div.bg-dark {
+    padding-top: 10px;
 }
