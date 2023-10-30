@@ -170,3 +170,15 @@ div.bg-dark {
     text-align: right;
 }
 
+.form-control {
+    width: 100% !important;
+}
+
+.payment {
+    color: white;
+}
+
+.btn-block {
+    margin: 10px auto;
+    display: block;
+}
