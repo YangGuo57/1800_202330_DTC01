@@ -1,0 +1,39 @@
+body {
+  background-color: #04364A;
+}
+
+.navbar {
+  background-color: #088395;
+}
+
+.col-lg-6 .display-4 {
+  color: white;
+}
+
+.col-lg-6 .lead {
+  color: white;
+}
+
+.bg-white .container {
+  background-color: #04364A;
+}
+
+.py-0 h2 {
+  color: white;
+}
+
+.py-0 p {
+  color: white;
+}
+
+.rounded {
+  background-color: #088395;
+}
+
+.col-lg-5 h2 {
+  color: white;
+}
+
+footer .container p {
+  color: white;
+}
