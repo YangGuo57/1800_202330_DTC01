@@ -97,8 +97,12 @@ footer {
     background-color: #176B87 !important;
 }
 
+footer .container {
+    padding: 0%;
+}
+
 footer a.material-icons {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 main {
