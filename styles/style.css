@@ -118,6 +118,6 @@ div.bg-dark {
 }
 
 #map {
-    height: 400px; /* or any other value */
+    height: 90vh;
     width: 100%;
 }
