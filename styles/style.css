@@ -116,3 +116,8 @@ main {
 div.bg-dark {
     padding-top: 10px;
 }
+
+#map {
+    height: 400px; /* or any other value */
+    width: 100%;
+}
