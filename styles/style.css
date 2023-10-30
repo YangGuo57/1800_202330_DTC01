@@ -116,26 +116,3 @@ main {
 div.bg-dark {
     padding-top: 10px;
 }
-
-/* FAVOURITES */
-
-.fav-card {
-    display: flex;
-    
-}
-
-.fav-card a {
-    color: #04364A;
-    text-decoration: none;
-}
-
-.fav-card img {
-    width: 150px;
-    height: 150px;
-}
-
-.cardbody {
-    background-color: #64CCC5;
-    display: flex;
-    flex-direction: column;
-}
