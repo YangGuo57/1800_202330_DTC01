@@ -152,21 +152,34 @@ div.bg-dark {
 }
 
 .texty {
-    width: 70vh!important;
+    width: 70vh !important;
     padding-left: 15px;
-}   
+}
+
 .col {
     flex: 0 0 0%;
 }
 
-.fav-card p, h2 {
+.fav-card p,
+h2 {
     padding: 5px 0px;
     margin: 0px;
 }
 
 .fav-button {
     text-decoration: none;
-    color: #04364A!important;
+    color: #04364A !important;
     text-align: right;
 }
 
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .btn {
+    margin-bottom: 10px;
+}
+.navbar {
+    align-items: center;
+}
