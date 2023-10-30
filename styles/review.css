@@ -1,0 +1,72 @@
+.container {
+  min-height: 100vh;
+}
+
+.ratings {
+  font-size: 70px;
+}
+
+#main-star .fa-star,
+#main-star .fa-star-half-alt {
+  font-size: 30px;
+  padding: 0 5px;
+}
+
+.review-pair {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-title {
+  text-align: left;
+  width: 20%;
+}
+
+.review-bar {
+  margin-top: 5px;
+  width: 80%;
+}
+
+.review-progress {
+  margin: 20px 0;
+}
+
+/* User */
+.d-flex {
+  margin-top: 5px;
+}
+
+.d-flex .user-icon {
+  margin-right: 20px;
+}
+
+.d-flex .name {
+  margin-right: 220px;
+  font-size:16px;
+  font-weight: bold;
+}
+
+.d-flex .days {
+  font-size: 14px;
+}
+
+.d-flex .stars-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mb-2 {
+  text-align: left;
+}
+
+/* add review button */
+.add-review {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.add-review button {
+  background-color: #64CCC5;
+  color: white;
+  width: 90%;
+}
