@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>FlushFinder</title>
+  <meta name="comp1800 template" content="My 1800 App">
+
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- Boostrap Library JS CDN  go here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+  <!-- Other libraries go here -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Link to styles of your own -->
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/write_review.css">
+
+</head>
+
+
+<body>
+  <nav id="navbarPlaceholder"></nav>
+  <!-- review section -->
+  <section style="color: white; background-color: #04364a;">
+    <div class="container py-5">
+      <!-- review title -->
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-xl-8 text-center">
+          <h1 class="fw-bold">Write your review</h1>
+        </div>
+      </div>
+
+      <!-- review bar section -->
+      <div class="review-progress">
+        <div class="review-item">
+          <div class="review-pair">
+            <div class="review-title">
+              <p>Cleanliness</p>
+            </div>
+            <div class="review-star">
+              <div class="rating">
+                <input type="radio" name="rating1" id="r1">
+                <label for="r1"></label>
+                <input type="radio" name="rating1" id="r2">
+                <label for="r2"></label>
+                <input type="radio" name="rating1" id="r3">
+                <label for="r3"></label>
+                <input type="radio" name="rating1" id="r4">
+                <label for="r4"></label>
+                <input type="radio" name="rating1" id="r5">
+                <label for="r5"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-item">
+          <div class="review-pair">
+            <div class="review-title">
+              <p>Odour</p>
+            </div>
+            <div class="review-star">
+              <div class="rating" >
+                <input type="radio" name="rating2" id="r6">
+                <label for="r6"></label>
+                <input type="radio" name="rating2" id="r7">
+                <label for="r7"></label>
+                <input type="radio" name="rating2" id="r8">
+                <label for="r8"></label>
+                <input type="radio" name="rating2" id="r9">
+                <label for="r9"></label>
+                <input type="radio" name="rating2" id="r10">
+                <label for="r10"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-item">
+          <div class="review-pair">
+            <div class="review-title">
+              <p>Safeness</p>
+            </div>
+            <div class="review-star">
+              <div class="rating">
+                <input type="radio" name="rating3" id="r11">
+                <label for="r11"></label>
+                <input type="radio" name="rating3" id="r12">
+                <label for="r12"></label>
+                <input type="radio" name="rating3" id="r13">
+                <label for="r13"></label>
+                <input type="radio" name="rating3" id="r14">
+                <label for="r14"></label>
+                <input type="radio" name="rating3" id="r15">
+                <label for="r15"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-item">
+          <div class="review-pair">
+            <div class="review-title">
+              <p>Accessible</p>
+            </div>
+            <div class="review-star">
+              <div class="rating">
+                <input type="radio" name="rating4" id="r16">
+                <label for="r16"></label>
+                <input type="radio" name="rating4" id="r17">
+                <label for="r17"></label>
+                <input type="radio" name="rating4" id="r18">
+                <label for="r18"></label>
+                <input type="radio" name="rating4" id="r19">
+                <label for="r19"></label>
+                <input type="radio" name="rating4" id="r20">
+                <label for="r20"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- add review -->
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+          style="height: 300px"></textarea>
+      </div>
+
+      <div class="add-review">
+        <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Submit</button>
+      </div>
+    </div>
+
+  </section>
+
+  <nav id="footerPlaceholder"></nav>
+
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/firebaseAPI_DTC01.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/write_review.js"></script>
+</body>
+
+</html>

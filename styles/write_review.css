@@ -1,0 +1,127 @@
+.container {
+  min-height: 100vh;
+}
+
+.review-pair {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-progress {
+  padding: 0 50px;
+}
+
+.review-title {
+  text-align: left;
+}
+
+.review-title {
+  font-size: 20px;
+}
+
+/* add review button */
+.add-review {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.add-review button {
+  background-color: #64CCC5;
+  color: white;
+  width: 90%;
+}
+
+.navbar {
+  align-items: start !important;
+}
+
+.star-rating {
+  line-height: 32px;
+  font-size: 1.25em;
+}
+
+.fw-bold {
+  margin-bottom: 40px;
+}
+
+.form-floating {
+  padding: 0 10px;
+}
+
+@keyframes pulse {
+  50% {
+    color: lighten(#444, 10%);
+    text-shadow: 0 0 15px lighten(#444, 20%);
+  }
+}
+
+.rating {
+  margin: 0px auto;
+  width: 200px;
+}
+
+.rating>* {
+  float: right;
+}
+
+.rating label {
+  height: 40px;
+  width: 20%;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.rating label:nth-of-type(5):after {
+  animation-delay: 5 * 0.05s;
+}
+
+.rating label:nth-of-type(4):after {
+  animation-delay: 4 * 0.05s;
+}
+
+.rating label:nth-of-type(3):after {
+  animation-delay: 3 * 0.05s;
+}
+
+.rating label:nth-of-type(2):after {
+  animation-delay: 2 * 0.05s;
+}
+
+.rating label:nth-of-type(1):after {
+  animation-delay: 1 * 0.05s;
+}
+
+.rating label:after {
+  transition: all 0.4s ease-out;
+  -webkit-font-smoothing: antialiased;
+  position: absolute;
+  content: '☆';
+  color: #444;
+  top: -6px;
+  width: 10%;
+  height: 10%;
+  font-size: 30px;
+  animation: 1s pulse ease;
+}
+
+.rating label:hover:after {
+  color: lighten(#444, 10%);
+  text-shadow: 0 0 15px lighten(#444, 10%);
+}
+
+.rating input {
+  display: none;
+}
+
+.rating input:checked+label:after,
+.rating input:checked~label:after {
+  content: '★';
+  color: #F9BF3B;
+  text-shadow: 0 0 5px #F9BF3B;
+}
+
+.rating input:checked+label,
+.rating input:checked~label {
+  cursor: pointer;
+}
