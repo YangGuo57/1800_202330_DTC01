@@ -1,4 +1,45 @@
+/* favourites */
+.fav-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 65px;
+}
+
 .fav-card {
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   background-color: #DAFFFB;
+  color: #04364A;
+  padding: 5px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.favourite {
+  display: flex;
+  flex-direction: column;
+}
+
+.imagey {
+  width: 30vh;
+}
+
+.texty {
+  width: 70vh !important;
+  padding-left: 15px;
+}
+
+.col {
+  flex: 0 0 0%;
+}
+
+.fav-card p,
+h2 {
+  padding: 5px 0px;
+  margin: 0px;
+}
+
+.fav-button {
+  text-decoration: none;
+  color: #04364A !important;
+  text-align: right;
 }
