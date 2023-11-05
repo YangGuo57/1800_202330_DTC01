@@ -5,6 +5,10 @@ button .btn {
     border: none;
 }
 
+#navbarPlaceholder .navbar {
+    background-color: #176B87 !important;
+}
+
 nav .btn,
 footer .btn {
     background-color: transparent;
