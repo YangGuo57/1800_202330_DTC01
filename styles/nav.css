@@ -1,12 +1,5 @@
-* {
-    margin: 0px;
-}
 
-body {
-    background-color: #04364a;
-}
-
-/* NAV BAR */
+/* Header */
 
 button .btn {
     border: none;
@@ -23,10 +16,6 @@ footer .btn {
 
 .navbar .d-flex {
     align-items: center !important;
-}
-
-.form-control {
-    margin: 10px 0px;
 }
 
 .btn a {
@@ -54,21 +43,7 @@ footer .btn {
     flex-wrap: nowrap !important;
 }
 
-.form-control {
-    background-color: #DAFFFB;
-    height: 50px;
-    width: 250px;
-    border-radius: 50px;
-}
-
-nav.navbar {
-    background-color: #176B87 !important;
-    padding: 0px !important;
-}
-
-main div.bg-dark {
-    background-color: #04364A !important;
-}
+/* Footer */
 
 footer {
     padding: 0px !important;
@@ -84,28 +59,6 @@ footer a.material-icons {
     font-size: 2.5rem;
 }
 
-main {
-    margin-bottom: 8vh;
-}
-
-.card {
-    background-color: #64CCC5;
-}
-
-.card-group {
-    background-color: #04364A !important;
-}
-
-div.bg-dark {
-    padding-top: 10px;
-}
-
-#map {
-    height: 90vh;
-    width: 100%;
-}
-
-
 .footer {
     display: flex;
     justify-content: space-between;
@@ -113,16 +66,4 @@ div.bg-dark {
 
 .footer .btn {
     margin-bottom: 10px;
-}
-
-.form-control {
-    width: 100% !important;
-}
-
-.payment {
-    color: white;
-}
-
-.btn-block {
-    display: block;
 }

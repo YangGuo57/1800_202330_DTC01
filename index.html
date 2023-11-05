@@ -34,8 +34,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <!-- Google Maps API -->
+  <script>
+    (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+      key: "AIzaSyBVoVvZzWrV7rDq37ZP3i8NpSpoqzeaFcU",
+      v: 3.54,
+      // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+      // Add other bootstrap parameters as needed, using camel case.
+    });
+  </script>
+
   <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/normalize.css">
+  <link rel="stylesheet" href="./styles/nav.css">
+  <link rel="stylesheet" href="./styles/map.css">
 
 </head>
 
@@ -48,24 +60,8 @@
   <!-- Header (Patricia) -->
   <nav id="navbarPlaceholder"></nav>
 
-  <!-- Stuff for body goes here -->
-  <!-- Welcome (Yang) -->
-  <main>
-    <img src="./images/washroom.jpg" class="card-img-top" alt="...">
-    <div class="bg-dark text-secondary px-4 py-4 text-center">
-      <div class="py-5">
-        <h1 class="display-5 fw-bold text-white">One Flush Away From Heaven</h1>
-        <div class="col-lg-6 mx-auto">
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"><a href="#about-us">About
-                Us</a></button>
-            <button type="button" class="btn btn-outline-light btn-lg px-4"><a href="login.html">Sign Up</a></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </main>
+  <!-- Body html goes here -->
+  <div id="map"></div>
 
   <!-- Footer (Shaun) -->
   <nav id="footerPlaceholder"></nav>
@@ -78,6 +74,7 @@
   <script src="./scripts/firebaseAPI_DTC01.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/maps.js"></script>
   <script>
     logout();       //make sure user is logged out
   </script>

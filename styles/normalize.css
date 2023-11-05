@@ -1,0 +1,33 @@
+/* Base (Normalize CSS/ Don't Change This)
+--------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
+/* Typography (Change font family, size, color, etc.)
+-------------------------------------------------------------- */
+
+h1,
+h2,
+h3
+ {
+	
+}
+
+p {
+	
+}
+
+a {
+
+}
