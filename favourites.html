@@ -51,47 +51,150 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
-    <div class="favourite">
+
+
+    <!-- --------------------------STYLE 1---------------------------------- -->
+    <!-- <div class="favourite">
         <div class="fav-card">
             <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
             <div class="texty">
-                <h2>Favourite Toilet 1 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
+                <h2>Favourite Toilet 1</h2>
                 <p>Address<br>Accessibility Info<br>More Information</p>
+            </div>
+        </div> -->
+
+
+        <!-- ----------------------STYLE 2--------------------------------- -->
+        <div class="fav-card">
+            <div class="texty">
+                <h2>Favourite Toilet 2</h2>
+                <div class="fav-text">
+                    <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
+                </div>
+            </div>
+            <div class="imagey">
+                <div class="card-button" id="fav-button">
+                    <a href="#" class="material-icons fav-button">
+                        favorite
+                    </a>
+                </div>
+                <div class="card-button" id="more-info"><button>More Info</button></div>
+                <div class="card-button" id="navigate"><button>Navigate</button></div>
             </div>
         </div>
         <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
             <div class="texty">
-                <h2>Favourite Toilet 2 <a href="#" class="material-icons fav-button">
+                <h2>Favourite Toilet 2</h2>
+                <div class="fav-text">
+                    <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
+                </div>
+            </div>
+            <div class="imagey">
+                <div class="card-button" id="fav-button">
+                    <a href="#" class="material-icons fav-button">
                         favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
+                    </a>
+                </div>
+                <div class="card-button" id="more-info"><button>More Info</button></div>
+                <div class="card-button" id="navigate"><button>Navigate</button></div>
             </div>
         </div>
         <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
             <div class="texty">
-                <h2>Favourite Toilet 3 <a href="#" class="material-icons fav-button">
+                <h2>Favourite Toilet 2</h2>
+                <div class="fav-text">
+                    <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
+                </div>
+            </div>
+            <div class="imagey">
+                <div class="card-button" id="fav-button">
+                    <a href="#" class="material-icons fav-button">
                         favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
+                    </a>
+                </div>
+                <div class="card-button" id="more-info"><button>More Info</button></div>
+                <div class="card-button" id="navigate"><button>Navigate</button></div>
             </div>
         </div>
-    </div>
+        <div class="fav-card">
+            <div class="texty">
+                <h2>Favourite Toilet 2</h2>
+                <div class="fav-text">
+                    <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
+                </div>
+            </div>
+            <div class="imagey">
+                <div class="card-button" id="fav-button">
+                    <a href="#" class="material-icons fav-button">
+                        favorite
+                    </a>
+                </div>
+                <div class="card-button" id="more-info"><button>More Info</button></div>
+                <div class="card-button" id="navigate"><button>Navigate</button></div>
+            </div>
+        </div>
+        <div class="fav-card">
+            <div class="texty">
+                <h2>Favourite Toilet 2</h2>
+                <div class="fav-text">
+                    <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
+                </div>
+            </div>
+            <div class="imagey">
+                <div class="card-button" id="fav-button">
+                    <a href="#" class="material-icons fav-button">
+                        favorite
+                    </a>
+                </div>
+                <div class="card-button" id="more-info"><button>More Info</button></div>
+                <div class="card-button" id="navigate"><button>Navigate</button></div>
+            </div>
+        </div>
 
-    <!-- Footer html -->
-    <nav id="footerPlaceholder"></nav>
 
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI_DTC01.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
+        <!-- populate a list of favourites from user favourite list -->
+        <!-- if no favourites yet then say something like no favourite toilets yet! -->
+        <div id="favourites-go-here"></div>
+
+
+        <!-- toilet card template -->
+        <!-- 
+        replace with info from Firestore:
+            ToiletName
+            ToiletDetails 
+        -->
+        <template id="fav-card-template">
+            <div class="fav-card">
+                <div class="texty">
+                    <h2 id="ToiletName"></h2>
+                    <div class="fav-text">
+                        <p id="ToiletDetails"></p>
+                    </div>
+                </div>
+                <div class="imagey">
+                    <div class="card-button" id="fav-button">
+                        <a href="#" class="material-icons fav-button">
+                            favorite
+                        </a>
+                    </div>
+                    <div class="card-button" id="more-info"><button>More Info</button></div>
+                    <div class="card-button" id="navigate"><button>Navigate</button></div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Footer html -->
+        <nav id="footerPlaceholder"></nav>
+
+
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+        <!-- Link to scripts of your own -->
+        <script src="./scripts/firebaseAPI_DTC01.js"></script>
+        <script src="./scripts/skeleton.js"></script>
+        <script src="./scripts/script.js"></script>
 
 </body>
 

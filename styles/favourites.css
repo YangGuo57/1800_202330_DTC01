@@ -1,17 +1,18 @@
 /* favourites */
 .fav-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 65px;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
 }
 
 .fav-card {
   margin: 20px 20px 0px 20px;
   background-color: #DAFFFB;
   color: #04364A;
-  padding: 5px;
+  padding: 10px 5px 5px 5px;
   border-radius: 20px;
   display: flex;
+  border: 3px solid #64ccc5;
 }
 
 .favourite {
@@ -20,22 +21,50 @@
 }
 
 .imagey {
-  width: 30vh;
+  width: 40vh;
+  padding: 5px;
+  text-align: center;
+
 }
 
 .texty {
+  display: flex;
+  flex-direction: column;
   width: 70vh !important;
-  padding-left: 15px;
+  padding: 5px;
 }
 
+.fav-text {
+  padding-left: 15%;
+  line-height: 1.3;
+font-weight: 100;
+}
+
+button {
+  border: none;
+  /* border: 2px solid #64ccc5; */
+  border-radius: 10px;
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 15px;
+font-weight: 100;
+}
+
+.card-button {
+  padding: 5px 10px 0px 10px;
+}
+
+.card-button button{
+color: #DAFFFB;
+  background-color: #04364A;
+}
 .col {
   flex: 0 0 0%;
 }
 
-.fav-card p,
 h2 {
-  padding: 5px 0px;
-  margin: 0px;
+  text-align: center;
+
 }
 
 /* .fav-button {
