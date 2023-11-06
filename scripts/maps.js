@@ -1,12 +1,23 @@
-let map;
+mapboxgl.accessToken = mapboxConfig.accessToken;
 
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v12',
+  center: [-123.11499773770726, 49.28378165988785],
+  zoom: 15
+});
 
-  map = new Map(document.getElementById("map"), {
-    center: { lat: 49.246292, lng: -123.116226 },
-    zoom: 8,
-  });
-}
+map.addControl(
+  new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+  })
+  );
 
-initMap();
+
+const markerLocation = [-123.11499773770726, 49.28378165988785];
+
+
+const marker = new mapboxgl.Marker()
+  .setLngLat(markerLocation)
+  .addTo(map);

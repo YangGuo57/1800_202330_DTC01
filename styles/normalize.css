@@ -17,6 +17,11 @@ img {
 /* Typography (Change font family, size, color, etc.)
 -------------------------------------------------------------- */
 
+body {
+    background-color: #04364A;
+}
+
+
 h1,
 h2,
 h3

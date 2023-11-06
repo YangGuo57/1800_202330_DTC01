@@ -16,3 +16,7 @@ const firebaseConfig = {
 //--------------------------------------------
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+
+const mapboxConfig = {
+    accessToken: "pk.eyJ1IjoiZHRjMDEyMDIzMzAiLCJhIjoiY2xvbjE2MjBkMTBscTJrbnJxMjVpbnJiMyJ9.77ZOJBhY6XUKJEvCNs7pjw"
+};
