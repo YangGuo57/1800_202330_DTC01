@@ -51,34 +51,14 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
-    <div class="favourite">
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 1 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
-            </div>
-        </div>
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 2 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
-            </div>
-        </div>
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 3 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
-            </div>
-        </div>
+    <div class="container">
+        <h1><span id="toiletName"></span></h1>
+        <!-- <img class="hike-img responsive" src=""/> -->
+        <button id="favorite-button" class="material-icons fav-button">favorite</button>
+        <div id="details-go-here"></div>
+        <div id="gallery-go-here">Add photos...</div>
+        <div id="reviews-go-here">Add a review...</div>
+
     </div>
 
     <!-- Footer html -->
@@ -91,8 +71,9 @@
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_DTC01.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
 
+    <!-- DEMO SCRIPTS UNTIL LIST VIEW CREATED -->
+    <script src="./scripts/demo_toilet_read_more.js"></script>
 </body>
 
 </html>

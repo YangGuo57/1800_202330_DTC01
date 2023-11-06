@@ -38,8 +38,21 @@ h2 {
   margin: 0px;
 }
 
-.fav-button {
+/* .fav-button {
   text-decoration: none;
   color: #04364A !important;
   text-align: right;
+} */
+
+
+/* unfavourited */
+.material-icons.fav-button {
+  color: #64ccc5;
+  text-decoration: none;
+}
+
+/* Apply styling for the "favorited" state */
+.material-icons.fav-button.favorited {
+  color: #04364A;
+  text-decoration: none;
 }

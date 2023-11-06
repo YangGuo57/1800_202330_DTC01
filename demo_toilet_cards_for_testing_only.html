@@ -51,35 +51,30 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
-    <div class="favourite">
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 1 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
-            </div>
-        </div>
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 2 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
-            </div>
-        </div>
-        <div class="fav-card">
-            <div class="imagey"><img src="/images/washroom.jpg" alt="" class="fav-img"></div>
-            <div class="texty">
-                <h2>Favourite Toilet 3 <a href="#" class="material-icons fav-button">
-                        favorite
-                    </a></h2>
-                <p>Address<br>Accessibility Info<br>More Information</p>
+    <div class="container">
+        <h1>Nearby</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="toilets-go-here" class="row row-cols-auto">
             </div>
         </div>
     </div>
+
+    <!-- Templates for general use, not displayed -->
+<template id="toiletCardTemplate">
+    <div class="card py-2 mx-2" style="width: 18rem">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-length">placeholder</p>
+            <br />
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </p>
+            <a class="btn btn-primary card-href">Read more</a>
+        </div>
+    </div>
+</template>
 
     <!-- Footer html -->
     <nav id="footerPlaceholder"></nav>
@@ -91,8 +86,9 @@
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_DTC01.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
-
+    
+    <!-- DEMO SCRIPTS UNTIL LIST VIEW CREATED -->
+    <script src="./scripts/demo_toilet_read_more.js"></script>
 </body>
 
 </html>
