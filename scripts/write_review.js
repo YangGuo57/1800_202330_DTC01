@@ -21,11 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
       .add(review)
       .then((docRef) => {
         console.log('Review added with ID: ', docRef.id);
-        // Optionally, you can display a success message to the user here.
       })
       .catch((error) => {
         console.error('Error adding review: ', error);
-        // Optionally, you can display an error message to the user here.
       });
   });
 });
