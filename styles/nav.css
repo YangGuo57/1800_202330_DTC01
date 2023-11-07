@@ -38,7 +38,7 @@ footer .btn {
     background-color: #64CCC5 !important;
     margin: 10px;
     font-weight: 700;
-    border-color: #64CCC5
+    border-color: #64CCC5;
 }
 
 .btn-outline-light {
@@ -57,6 +57,7 @@ footer .btn {
     background-color: #DAFFFB;
     margin: 0;
     padding: 5px;
+    border-radius: 10px;
 
 }
 
