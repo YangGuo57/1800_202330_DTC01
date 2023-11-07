@@ -1,11 +1,11 @@
 // DEMO SECTION used only for demo_toilet_cards_for_testing_only.html
 
 function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("toiletCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+    let cardTemplate = document.getElementById("toiletCardTemplate"); // Retrieve the HTML element with the ID "toiletCardTemplate" and store it in the cardTemplate variable. 
 
     db.collection(collection).get()
         .then(allToilets => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
+            //var i = 1;  //Optional: if you want to have a unique ID for each toilet
             allToilets.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;
                 var location = doc.data().geo_local_area;

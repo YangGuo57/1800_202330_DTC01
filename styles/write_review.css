@@ -125,3 +125,7 @@
 .rating input:checked~label {
   cursor: pointer;
 }
+
+.modal-body {
+  color: black;
+}

@@ -44,7 +44,7 @@
 
 <body>
   <nav id="navbarPlaceholder"></nav>
-  
+
   <!-- review section -->
   <section style="color: white; background-color: #04364a;">
     <div class="container py-5">
@@ -85,7 +85,7 @@
               <p>Odour</p>
             </div>
             <div class="review-star">
-              <div class="rating" >
+              <div class="rating">
                 <input type="radio" name="rating2" id="r6" value="5">
                 <label for="r6"></label>
                 <input type="radio" name="rating2" id="r7" value="4">
@@ -146,6 +146,24 @@
         </div>
       </div>
 
+      <!-- Modal for Submission Success -->
+      <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="successModalLabel">Submission Successful</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Your review has been successfully submitted.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- add review -->
       <div class="form-floating">
         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
@@ -153,8 +171,10 @@
       </div>
 
       <div class="add-review">
-        <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Submit</button>
+        <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" data-bs-toggle="modal"
+          data-bs-target="#successModal">Submit</button>
       </div>
+
     </div>
 
   </section>
@@ -167,7 +187,7 @@
   <script src="./scripts/write_review.js"></script>
   <script src="./scripts/script.js"></script>
   <script>
-      logout();       //make sure user is logged out
+    logout();       //make sure user is logged out
   </script>
 </body>
 
