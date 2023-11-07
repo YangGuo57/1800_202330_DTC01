@@ -11,6 +11,9 @@
 // Toilet cards have to show up in list as favourited if they are in the user's favourites
 
 
+//Favourited toilets show up in favourtes page
+
+
 // Toggle the "favorited" state when the button is clicked
 // document.getElementById("favorite-button").addEventListener("click", function () {
 //     var docID = doc.id;
@@ -37,28 +40,34 @@
 
 // });
 
-document.getElementById("favorite-button").addEventListener("click", function () {
+document.getElementById("favourite-button").addEventListener("click", function () {
     db.collection("toilets").get()
-    var docID = doc.id
-    this.classList.toggle("favorited"); // Toggle the 'favorited' class on the button
+    var currentURL = window.location.href;
+    var urlParams = new URLSearchParams(currentURL);
+    var docID = urlParams.get("docID");
 
-    // Check if the button has the "favorited" class
-    if (this.classList.contains("favorited")) {
-        db.collection("users").add({
-            favorites: [docID] 
+    console.log(docID); 
+
+    this.classList.toggle("favourited");
+
+
+    if (this.classList.contains("favourited")) {
+        db.collection("favourites").add({
+            user: firebase.auth().currentUser.uid,
+            favourites: docID
         });
     } else {
-        db.collection("users").where("favorites", "array-contains", docID).get()
+        db.collection("favourites").where("favourites", "array-contains", docID).get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    var updatedFavorites = doc.data().favorites.filter(favorite => favorite !== docID);
-                    db.collection("users").doc(doc.id).update({
+                    var updatedFavorites = doc.data().favorites.filter(favourite => favourite !== docID);
+                    db.collection("favourites").doc(doc.id).update({
                         favorites: updatedFavorites
                     });
                 });
             })
             .catch(function (error) {
-                console.error("Error removing favorite: ", error);
+                console.error("Error removing favourite: ", error);
             });
     }
 });

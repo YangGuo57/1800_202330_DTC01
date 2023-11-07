@@ -81,7 +81,7 @@ h2 {
 }
 
 /* Apply styling for the "favorited" state */
-.material-icons.fav-button.favorited {
+.material-icons.fav-button.favourited {
   color: #04364A;
   text-decoration: none;
 }
