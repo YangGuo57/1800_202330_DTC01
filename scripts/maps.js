@@ -15,9 +15,20 @@ map.addControl(
   );
 
 
-const markerLocation = [-123.11499773770726, 49.28378165988785];
+
+  db.collection("toilets").get()
+    .then(allToilets => {
+        allToilets.forEach(doc => {
+          var lon = doc.data().lon
+          var lat = doc.data().lat
+          
+
+          let markerLocation = [lon, lat];
+          
+          let marker = new mapboxgl.Marker()
+          .setLngLat(markerLocation)
+          .addTo(map);
+        });
 
 
-const marker = new mapboxgl.Marker()
-  .setLngLat(markerLocation)
-  .addTo(map);
+    });
