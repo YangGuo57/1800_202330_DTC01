@@ -66,7 +66,7 @@ function displayToiletInfo() {
 }
 displayToiletInfo();
 
-// Toggle the "favorited" state when the button is clicked
-document.getElementById("favorite-button").addEventListener("click", function () {
-    this.classList.toggle("favorited");
-});
+// // Toggle the "favorited" state when the button is clicked
+// document.getElementById("favourite-button").addEventListener("click", function () {
+//     this.classList.toggle("favorited");
+// });
