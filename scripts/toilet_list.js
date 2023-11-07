@@ -29,3 +29,4 @@ function setup() {
         success: add_toilets
     });
 }
+
