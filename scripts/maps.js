@@ -37,6 +37,7 @@ map.on('load', function () {
             Location: ${location}<br>
             Wheelchair Access: ${disability}
           </div>
+          <button class="more-info-button">More Info</button>
           `);
 
         marker.setPopup(popup);

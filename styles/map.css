@@ -19,3 +19,13 @@
 .mapboxgl-popup-close-button {
   width: 20px;
 }
+
+.more-info-button {
+  border-radius: 10%;
+  background-color: none;
+  border: 1px solid white;
+  font-size: 8px;
+  padding: 0 1px;
+  color: white;
+  background-color: #176B87;
+}
