@@ -9,26 +9,41 @@ const map = new mapboxgl.Map({
 
 map.addControl(
   new MapboxGeocoder({
-  accessToken: mapboxgl.accessToken,
-  mapboxgl: mapboxgl
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
   })
-  );
+);
 
-
-
+map.on('load', function () {
   db.collection("toilets").get()
     .then(allToilets => {
-        allToilets.forEach(doc => {
-          var lon = doc.data().lon
-          var lat = doc.data().lat
-          
+      allToilets.forEach(doc => {
+        var lon = doc.data().lon;
+        var lat = doc.data().lat;
+        var title = doc.data().name;
+        var location = doc.data().geo_local_area;
+        var disability = doc.data().wheel_access;
 
-          let markerLocation = [lon, lat];
-          
-          let marker = new mapboxgl.Marker()
+        let markerLocation = [lon, lat];
+
+        let marker = new mapboxgl.Marker()
           .setLngLat(markerLocation)
           .addTo(map);
+
+        const popup = new mapboxgl.Popup()
+          .setHTML(`
+          <div class = "popup">
+            <strong class="popup-title">${title}</strong><br>
+            Location: ${location}<br>
+            Wheelchair Access: ${disability}
+          </div>
+          `);
+
+        marker.setPopup(popup);
+
+        marker.getElement().addEventListener('click', () => {
+          popup.addTo(map);
         });
-
-
+      });
     });
+});
