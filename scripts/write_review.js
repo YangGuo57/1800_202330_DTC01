@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const odourRatings = getRatings('rating2');
     const safenessRatings = getRatings('rating3');
     const accessibleRatings = getRatings('rating4');
-    const comment = document.getElementById('floatingTextarea2').value;
+    const commentTextarea = document.getElementById('floatingTextarea2');
+    const comment = commentTextarea.value;
 
     const currentUser = firebase.auth().currentUser;
 
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then((docRef) => {
           console.log('Review added with ID: ', docRef.id);
+          // Clear the textarea
+          commentTextarea.value = '';
         })
         .catch((error) => {
           console.error('Error adding review: ', error);
