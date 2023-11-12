@@ -2,14 +2,10 @@
   min-height: 100vh;
 }
 
-.ratings {
+#averageRating {
   font-size: 70px;
-}
-
-#main-star .fa-star,
-#main-star .fa-star-half-alt {
-  font-size: 30px;
-  padding: 0 5px;
+  height: 100px;
+  color: white;
 }
 
 .review-pair {
@@ -42,7 +38,7 @@
 
 .d-flex .name {
   margin-right: 220px;
-  font-size:16px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -72,7 +68,7 @@
 }
 
 .card {
-  background-color: #ffffff!important;
+  background-color: #ffffff !important;
 }
 
 .navbar {
