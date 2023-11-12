@@ -127,24 +127,18 @@ function calculateAverageRating(querySnapshot, category) {
   return (totalRating / reviewCount);
 }
 
-// New function to get rating color based on value
-function getRatingColor(value) {
-  if (value >= 75) {
-    return 'danger';
-  } else if (value >= 50) {
-    return 'warning';
-  } else if (value >= 25) {
-    return 'info';
-  } else {
-    return 'success';
-  }
-}
-
 // New function to display dynamic progress bars
 function displayDynamicProgressBars(querySnapshot) {
   const progressContainer = document.querySelector('.review-progress');
 
   const ratingItems = ['Cleanliness', 'Odour', 'Safeness', 'Accessible'];
+
+  const categoryColors = {
+    'Cleanliness': 'success',  
+    'Odour': 'danger',         
+    'Safeness': 'warning',     
+    'Accessible': 'info'       
+  };
 
   ratingItems.forEach((item) => {
     const reviewItem = document.createElement('div');
@@ -168,7 +162,9 @@ function displayDynamicProgressBars(querySnapshot) {
     progressBar.setAttribute('aria-valuemax', '100');
 
     const progressInnerBar = document.createElement('div');
-    progressInnerBar.classList.add('progress-bar', `bg-${getRatingColor(calculateAverageRating(querySnapshot, item))}`);
+    progressInnerBar.classList.add('progress-bar', `bg-${categoryColors[item]}`);
+
+
     progressInnerBar.style.width = `${(calculateAverageRating(querySnapshot, item) / 5) * 100}%`;
 
     progressBar.appendChild(progressInnerBar);
