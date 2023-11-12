@@ -17,7 +17,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-length').innerHTML = "Location: " + location;
                 newcard.querySelector('.card-text').innerHTML = "Wheelchair Access: " + disability;
-                newcard.querySelector('a').href = "demo_toilet_read_more.html?docID=" + docID;
+                newcard.querySelector('a').href = "toilet.html?docID=" + docID;
 
                 //Optional: give unique ids to all elements for future use
                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);

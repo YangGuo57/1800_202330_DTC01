@@ -13,32 +13,7 @@
 
 //Favourited toilets show up in favourtes page
 
-
-// Toggle the "favorited" state when the button is clicked
-// document.getElementById("favorite-button").addEventListener("click", function () {
-//     var docID = doc.id;
-//     this.classList.toggle("favorited");
-//     if (docID not in db.collection("users")) {
-//     db.collection("users").add({
-//         favourites: docID
-//     });
-// }
-// });
-
-
-// document.getElementById("favorite-button").addEventListener("click", function () {
-//     var docID = doc.id;
-//     this.classList.toggle("favorited");
-//     if document.getElementById("favorite-button") has class "favorited":
-//         db.collection("users").add({
-//             favourites: docID
-//         });
-//     else:
-//     db.collection("users").remove({
-//             favourites: docID
-//         })
-
-// });
+var toiletDocID = localStorage.getItem("toiletDocID");
 
 document.getElementById("favourite-button").addEventListener("click", function () {
     db.collection("toilets").get()

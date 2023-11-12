@@ -53,7 +53,7 @@
 
     <!-- Body html goes here -->
     <div class="container">
-        <h1>Washroom Nearby</h1>
+        <h1>Nearby Washrooms</h1>
         <!-- Here is the container for cards  -->
         <div class="container">
             <div id="toilets-go-here" class="row row-cols-auto">
@@ -65,13 +65,9 @@
     <template id="toiletCardTemplate">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-length">placeholder</p>
-                <br />
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
+                <h5 class="card-title"></h5>
+                <p class="card-location"></p>
+                <p class="card-accessibility"></p>
                 <a class="btn btn-primary card-href">Read more</a>
             </div>
         </div>
@@ -87,8 +83,6 @@
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_DTC01.js"></script>
     <script src="./scripts/skeleton.js"></script>
-
-    <!-- DEMO SCRIPTS UNTIL LIST VIEW CREATED -->
     <script src="./scripts/list_view.js"></script>
 </body>
 
