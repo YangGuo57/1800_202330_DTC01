@@ -169,7 +169,7 @@ function displayDynamicProgressBars(querySnapshot) {
 
     const progressInnerBar = document.createElement('div');
     progressInnerBar.classList.add('progress-bar', `bg-${getRatingColor(calculateAverageRating(querySnapshot, item))}`);
-    progressInnerBar.style.width = `${calculateAverageRating(querySnapshot, item)}%`;
+    progressInnerBar.style.width = `${(calculateAverageRating(querySnapshot, item) / 5) * 100}%`;
 
     progressBar.appendChild(progressInnerBar);
     reviewBar.appendChild(progressBar);
