@@ -13,37 +13,67 @@
 
 //Favourited toilets show up in favourtes page
 
-var toiletDocID = localStorage.getItem("toiletDocID");
+// function displayCardsDynamically(collection) {
+//     let cardTemplate = document.getElementById("fav-card-template"); 
+//     db.collection("favourites").get()
+//         .then(allFavourites => {
+//             allFavourites.forEach(doc => { 
+//                 var title = doc.data().name;
+//                 var location = doc.data().geo_local_area;
+//                 var disability = doc.data().wheel_access;
+//                 var toiletWinter = doc.data().winter_hours;
+//                 var docID = doc.id;
+//                 let newcard = cardTemplate.content.cloneNode(true); 
 
-document.getElementById("favourite-button").addEventListener("click", function () {
-    db.collection("toilets").get()
-    var currentURL = window.location.href;
-    var urlParams = new URLSearchParams(currentURL);
-    var docID = urlParams.get("docID");
+//                 //update title and text and image
+//                 newcard.querySelector('#ToiletName').innerHTML = title;
+//                 newcard.querySelector('#location').innerHTML = "Location: " + location;
+//                 newcard.querySelector('#hours').innerHTML = "Hours: " + toiletWinter;
+//                 newcard.querySelector('#disability').innerHTML = "Wheelchair Access: " + disability;
 
-    console.log(docID); 
+//                 document.getElementById(collection + "-go-here").appendChild(newcard);
+//             })
+//         })
+// }
+// displayCardsDynamically("favourites"); 
 
-    this.classList.toggle("favourited");
+function displayCardsDynamically(collection) {
+    let cardTemplate = document.getElementById("fav-card-template"); 
+    const currentUser = firebase.auth().currentUser;
 
+    if (currentUser) {
+        const userUid = currentUser.uid;
 
-    if (this.classList.contains("favourited")) {
-        db.collection("favourites").add({
-            user: firebase.auth().currentUser.uid,
-            favourites: docID
-        });
-    } else {
-        db.collection("favourites").where("favourites", "array-contains", docID).get()
-            .then(function (querySnapshot) {
-                querySnapshot.forEach(function (doc) {
-                    var updatedFavorites = doc.data().favorites.filter(favourite => favourite !== docID);
-                    db.collection("favourites").doc(doc.id).update({
-                        favorites: updatedFavorites
-                    });
+        // Query Firestore to get favorites for the specific user
+        db.collection("favourites")
+            .where("user", "==", userUid)
+            .get()
+            .then(allFavourites => {
+                allFavourites.forEach(doc => { 
+                    var title = doc.data().name;
+                    var location = doc.data().geo_local_area;
+                    var disability = doc.data().wheel_access;
+                    var toiletWinter = doc.data().winter_hours;
+                    var docID = doc.id;
+                    let newcard = cardTemplate.content.cloneNode(true); 
+
+                    // Update title and text and image
+                    newcard.querySelector('#ToiletName').innerHTML = title;
+                    newcard.querySelector('#location').innerHTML = "Location: " + location;
+                    newcard.querySelector('#hours').innerHTML = "Hours: " + toiletWinter;
+                    newcard.querySelector('#disability').innerHTML = "Wheelchair Access: " + disability;
+
+                    document.getElementById(collection + "-go-here").appendChild(newcard);
                 });
             })
-            .catch(function (error) {
-                console.error("Error removing favourite: ", error);
+            .catch(error => {
+                console.error("Error getting favorites:", error);
             });
+    } else {
+        console.log("User not logged in.");
     }
-});
+}
+
+displayCardsDynamically("favourites");
+
 
