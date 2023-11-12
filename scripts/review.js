@@ -6,6 +6,7 @@ function displayReviews() {
   db.collection('reviews')
     .get()
     .then((querySnapshot) => {
+
       querySnapshot.forEach((doc) => {
         const reviewData = doc.data();
 
@@ -63,10 +64,38 @@ function generateStarRating(rating) {
   return starsHtml;
 }
 
-const mainStarContainer = document.getElementById('main-star');
-mainStarContainer.innerHTML = generateStarRating(5.1);
+function displayAverageRating() {
+  const db = firebase.firestore();
 
+  db.collection('reviews')
+    .get()
+    .then((querySnapshot) => {
+      let totalRating = 0;
+      let reviewCount = 0;
+
+      querySnapshot.forEach((doc) => {
+        const reviewData = doc.data();
+
+        totalRating += parseFloat(reviewData.cleanlinessRatings) +
+          parseFloat(reviewData.odourRatings) +
+          parseFloat(reviewData.safenessRatings) +
+          parseFloat(reviewData.accessibleRatings);
+        reviewCount++;
+      });
+
+      const averageRating = totalRating / (reviewCount * 4);
+
+      document.getElementById('averageRating').textContent = averageRating.toFixed(1);
+    })
+    .catch((error) => {
+      console.error('Error fetching reviews: ', error);
+    });
+}
+
+const mainStarContainer = document.getElementById('main-star');
+mainStarContainer.innerHTML = generateStarRating();
 
 document.addEventListener('DOMContentLoaded', function () {
+  displayAverageRating();
   displayReviews();
 });
