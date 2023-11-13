@@ -8,6 +8,7 @@ function insertNameFromFirestore() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid); // Let's know who the logged-in user is by logging their UID
+            localStorage.setItem('userID', user.uid);
             currentUser = db.collection("users").doc(user.uid); // Go to the Firestore document of the user
             currentUser.get().then(userDoc => {
                 // Get the user name

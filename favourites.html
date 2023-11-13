@@ -52,26 +52,6 @@
 
     <!-- Body html goes here -->
 
-    <div class="fav-card">
-        <div class="texty">
-            <h2>Favourite Toilet 2</h2>
-            <div class="fav-text">
-                <p>Location: Downtown<br>Hours: All Day <br>Accessibility: Y</p>
-            </div>
-        </div>
-        <div class="imagey">
-            <div class="card-button" id="fav-button">
-                <a href="#" class="material-icons fav-button">
-                    favorite
-                </a>
-            </div>
-            <div class="card-button" id="more-info"><button>More Info</button></div>
-            <div class="card-button" id="navigate"><button>Navigate</button></div>
-        </div>
-    </div>
-
-
-
     <!-- populate a list of favourites from user favourite list -->
     <!-- if no favourites yet then say something like no favourite toilets yet! -->
     <div id="favourites-go-here"></div>
@@ -97,8 +77,8 @@
                         favorite
                     </a>
                 </div>
-                <div class="card-button" id="more-info"><button>More Info</button></div>
-                <div class="card-button" id="navigate"><button>Navigate</button></div>
+                <div class="card-button" ><a id="more-info"><button>More Info</button></a></div>
+                <div class="card-button" ><button id="navigate">Navigate</button></div>
             </div>
         </div>
     </template>
@@ -113,6 +93,7 @@
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_DTC01.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
     <script src="./scripts/favourites.js"></script>
     <script src="./scripts/favourite_button.js"></script>
 

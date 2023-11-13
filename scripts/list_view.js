@@ -16,16 +16,7 @@ function displayCardsDynamically(collection) {
                 newcard.querySelector('.card-location').innerHTML = "Location: " + location;
                 newcard.querySelector('.card-accessibility').innerHTML = "Wheelchair Access: " + disability;
                 newcard.querySelector('a').href = "toilet.html?docID=" + docID;
-
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newcard);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
             })
         })
 }
@@ -50,19 +41,11 @@ function displayToiletInfo() {
             toiletWinter = doc.data().winter_hours;
             toiletType = doc.data().type;
 
-            // only populate title, and image
+    
             document.getElementById("toiletName").innerHTML = toiletName;
             document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
-            // let imgEvent = document.querySelector( ".hike-img" );
-            // imgEvent.src = "../images/" + hikeCode + ".jpg";
-
 
         });
 }
 displayToiletInfo();
 
-
-// // Toggle the "favorited" state when the button is clicked
-// document.getElementById("favourite-button").addEventListener("click", function () {
-//     this.classList.toggle("favorited");
-// });

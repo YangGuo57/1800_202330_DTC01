@@ -100,7 +100,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.getElementById("favourite-button").addEventListener("click", async function () {
     try {
-        const toiletButton = document.getElementById("favourite-button");
         const toiletDocID = localStorage.getItem("toiletDocID");
 
         // Toggle the "favourited" class
