@@ -1,3 +1,8 @@
+let params = new URL(window.location.href);
+console.log(params.toString());
+let ID = params.searchParams.get("docID");
+console.log(ID);
+
 document.addEventListener('DOMContentLoaded', function () {
   const submitButton = document.querySelector('.add-review button');
   submitButton.addEventListener('click', () => {
@@ -19,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .add({
           userId: userId,
           userName: userName,
+          DOCId: ID,
           cleanlinessRatings: cleanlinessRatings.join(','),
           odourRatings: odourRatings.join(','),
           safenessRatings: safenessRatings.join(','),
@@ -38,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 
 function getRatings(radioGroupName) {
   const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);

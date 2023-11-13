@@ -38,3 +38,26 @@ button {
     background-color: #DAFFFB;
     border-radius: 20px;
   }
+
+  #reviews-go-here {
+    border-radius: 20px;
+    background-color: #DAFFFB;
+    width: 97vw;
+    margin: 10px auto;
+  }
+
+.star-rating {
+  color: #F9BF3B;
+  /* Gold color for filled stars */
+  font-size: 20px;
+  /* Adjust the size as needed */
+}
+
+.star-rating>span {
+  color: #ccc;
+  /* Color for empty stars */
+}
+
+.review {
+  margin-left: 20px;
+}
