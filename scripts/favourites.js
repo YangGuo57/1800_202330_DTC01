@@ -1,5 +1,5 @@
-//Favourited toilets show up in favourites page
 
+//Favourited toilets show up in favourites page
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("fav-card-template");
     const userUid = localStorage.getItem("userID");
@@ -30,7 +30,6 @@ function displayCardsDynamically(collection) {
             })
         })
 }
-
 
 displayCardsDynamically("favourites");
 

@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+//This will toggle the favourites button and add and delete from Firestore
 document.getElementById("favourite-button").addEventListener("click", async function () {
     try {
         const toiletDocID = localStorage.getItem("toiletDocID");
