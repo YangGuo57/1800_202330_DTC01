@@ -63,16 +63,9 @@ color: #DAFFFB;
 }
 
 h2 {
-  text-align: center;
+  padding-left: 10%;
 
 }
-
-/* .fav-button {
-  text-decoration: none;
-  color: #04364A !important;
-  text-align: right;
-} */
-
 
 /* unfavourited */
 .material-icons.fav-button {

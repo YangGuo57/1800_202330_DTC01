@@ -1,49 +1,58 @@
-// When in a toilet card or toilet page, clicking the heart icon will add to user's favourites if the user is logged in
-// If the user is not logged in, a pop up will appear asking the user to log in
 
+//Favourited toilets show up in favourites page
+function displayCardsDynamically(collection) {
+    let cardTemplate = document.getElementById("fav-card-template");
+    const userUid = localStorage.getItem("userID");
 
-
-
-// When in the user's favourites page, clicking the heart icon will remove from user's favourites 
-
-
-
-// Toilet cards have to show up in list as favourited if they are in the user's favourites
-
-
-//Favourited toilets show up in favourtes page
-
-var toiletDocID = localStorage.getItem("toiletDocID");
-
-document.getElementById("favourite-button").addEventListener("click", function () {
-    db.collection("toilets").get()
-    var currentURL = window.location.href;
-    var urlParams = new URLSearchParams(currentURL);
-    var docID = urlParams.get("docID");
-
-    console.log(docID); 
-
-    this.classList.toggle("favourited");
-
-
-    if (this.classList.contains("favourited")) {
-        db.collection("favourites").add({
-            user: firebase.auth().currentUser.uid,
-            favourites: docID
-        });
-    } else {
-        db.collection("favourites").where("favourites", "array-contains", docID).get()
-            .then(function (querySnapshot) {
-                querySnapshot.forEach(function (doc) {
-                    var updatedFavorites = doc.data().favorites.filter(favourite => favourite !== docID);
-                    db.collection("favourites").doc(doc.id).update({
-                        favorites: updatedFavorites
-                    });
-                });
+    db.collection("favourites").where("user", "==", userUid).get()
+        .then(favouritesSnapshot => {
+            favouritesSnapshot.forEach(favDoc => {
+                var toiletID = favDoc.data().toiletID;
+                db.collection("toilets").doc(toiletID).get()
+                .then(toiletDoc => {
+                    var title = toiletDoc.data().name;
+                    var location = toiletDoc.data().geo_local_area;
+                    var disability = toiletDoc.data().wheel_access;
+                    var toiletWinter = toiletDoc.data().winter_hours;
+                    localStorage.setItem('toiletId', toiletID);
+                    
+                    let newcard = cardTemplate.content.cloneNode(true);
+                    
+                    //update title and text and image
+                    newcard.querySelector('#ToiletName').innerHTML = title;
+                    newcard.querySelector('#location').innerHTML = "Location: " + location;
+                    newcard.querySelector('#hours').innerHTML = "Hours: " + toiletWinter;
+                    newcard.querySelector('#disability').innerHTML = "Wheelchair Access: " + disability;
+                    newcard.querySelector('#more-info').href = "toilet.html?docID=" + toiletID;
+                    
+                    document.getElementById(collection + "-go-here").appendChild(newcard);
+                })
             })
-            .catch(function (error) {
-                console.error("Error removing favourite: ", error);
-            });
-    }
-});
+        })
+}
 
+displayCardsDynamically("favourites");
+
+// FOR SHOWING TOILET READ MORE INFO FROM FAV PAGE
+function displayToiletInfo() {
+    let toiletID = localStorage.getItem("toiletId");
+    db.collection("toilets")
+        .doc(toiletID)
+        .get()
+        .then(doc => {
+            thisToilet = doc.data();
+            toiletName = doc.data().name;
+            toiletLocation = doc.data().geo_local_area;
+            toiletAddress = doc.data().address;
+            toiletWheelchair = doc.data().wheel_access;
+            toiletSummer = doc.data().summer_hours;
+            toiletWinter = doc.data().winter_hours;
+            toiletType = doc.data().type;
+
+    
+            document.getElementById("toiletName").innerHTML = toiletName;
+            document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
+
+        });
+}
+displayToiletInfo();
