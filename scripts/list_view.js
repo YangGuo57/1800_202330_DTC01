@@ -53,7 +53,7 @@ function displayToiletInfo() {
             // only populate title, and image
             document.getElementById("toiletName").innerHTML = toiletName;
             document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
-            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn btn-primary'>Add Review</a>";
+            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn'>Add Review</a>";
             // let imgEvent = document.querySelector( ".hike-img" );
             // imgEvent.src = "../images/" + hikeCode + ".jpg";
 
