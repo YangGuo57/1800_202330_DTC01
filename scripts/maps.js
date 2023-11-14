@@ -18,6 +18,7 @@ map.on('load', function () {
   db.collection("toilets").get()
     .then(allToilets => {
       allToilets.forEach(doc => {
+        var docID = doc.id;
         var lon = doc.data().lon;
         var lat = doc.data().lat;
         var title = doc.data().name;
@@ -37,10 +38,10 @@ map.on('load', function () {
             Location: ${location}<br>
             Wheelchair Access: ${disability}
           </div>
-          <button class="more-info-button">More Info</button>
+          <button class="more-info-button"><a href="toilet.html?docID=${docID}">More Info</a></button>
           `);
 
-        marker.setPopup(popup);
+        marker.setPopup(popup)
 
         marker.getElement().addEventListener('click', () => {
           popup.addTo(map);
