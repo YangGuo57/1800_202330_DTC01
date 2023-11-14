@@ -88,7 +88,6 @@ function calculateAverageRating(reviewData) {
   return numberOfRatings > 0 ? totalRatings / numberOfRatings : 0;
 }
 
-
 // Function to display reviews for a specific toilet
 function displayReviewsForToilet(docID) {
   const reviewsContainer = document.getElementById('reviews-go-here');
@@ -126,11 +125,4 @@ function displayReviewsForToilet(docID) {
       console.error('Error fetching reviews:', error);
     });
 }
-
-
 displayReviewsForToilet(ID)
-
-// // Toggle the "favorited" state when the button is clicked
-// document.getElementById("favourite-button").addEventListener("click", function () {
-//     this.classList.toggle("favorited");
-// });
