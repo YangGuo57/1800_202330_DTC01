@@ -23,6 +23,15 @@ button {
     margin: 5px;
 }
 
+#add-photo, #add-review {
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #64ccc5;
+    color: #04364A;
+    margin: 5px;
+}
+
 .material-icons.fav-button {
     color: #64ccc5;
     text-decoration: none;

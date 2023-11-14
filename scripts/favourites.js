@@ -86,11 +86,3 @@ function remove(toiletID) {
             console.error("Error removing toilet from favorites:", error);
         }
     }
-
-
-
-
-
-
-
-
