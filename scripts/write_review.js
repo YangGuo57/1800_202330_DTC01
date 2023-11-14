@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
           console.log('Review added with ID: ', docRef.id);
           // Clear the textarea
           commentTextarea.value = '';
+          clearRatings('rating1');
+          clearRatings('rating2');
+          clearRatings('rating3');
+          clearRatings('rating4');
+
         })
         .catch((error) => {
           console.error('Error adding review: ', error);
@@ -45,6 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function clearRatings(radioGroupName) {
+  const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);
+  selectedRadios.forEach((radio) => {
+    radio.checked = false;
+  });
+}
 
 function getRatings(radioGroupName) {
   const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);
