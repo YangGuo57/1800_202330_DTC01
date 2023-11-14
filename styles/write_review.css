@@ -1,7 +1,3 @@
-.container {
-  min-height: 100vh;
-}
-
 .review-pair {
   display: flex;
   justify-content: space-between;
