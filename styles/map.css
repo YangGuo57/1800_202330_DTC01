@@ -29,3 +29,8 @@
   color: white;
   background-color: #176B87;
 }
+
+button a {
+  color: white;
+  text-decoration: none;
+}

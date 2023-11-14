@@ -115,7 +115,7 @@ function displayReviewsForToilet(docID) {
         // Populate the review element with review data and star rating
         reviewElement.innerHTML = `
           <h3>${reviewData.userName}</h3>
-          ${starRating}
+          ${starRating}-
           <p>${reviewData.comment}</p>
         `;
 
