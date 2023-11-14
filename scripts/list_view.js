@@ -2,9 +2,9 @@
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("toiletCardTemplate"); // Retrieve the HTML element with the ID "toiletCardTemplate" and store it in the cardTemplate variable. 
 
-    db.collection(collection).get()
+    db.collection(collection).limit(10).get()
         .then(allToilets => {
-            allToilets.forEach(doc => { 
+            allToilets.forEach(doc => {
                 var title = doc.data().name;
                 var location = doc.data().geo_local_area;
                 var disability = doc.data().wheel_access;
