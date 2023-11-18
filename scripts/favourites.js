@@ -64,7 +64,7 @@ displayToiletInfo();
 
 //This will delete from Firestore
 function remove(toiletID) {
-    const currentUser = localStorage.getItem("userID");
+    const currentUser = firebase.auth().currentUser.uid;
     console.log(toiletID);
 
     try {
