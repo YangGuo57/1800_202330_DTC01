@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const currentUser = firebase.auth().currentUser;
 
+    // Function to set default rating if no rating is selected
+    const setDefaultRating = (ratingsArray) => {
+      if (ratingsArray.length === 0) {
+        ratingsArray.push('1'); // Set default rating to 1
+      }
+    };
+
+    // Set default ratings if no ratings are selected
+    setDefaultRating(cleanlinessRatings);
+    setDefaultRating(odourRatings);
+    setDefaultRating(safenessRatings);
+    setDefaultRating(accessibleRatings);
+
     if (currentUser) {
       const userId = currentUser.uid;
       const userName = currentUser.displayName || "Unknown"; // Use displayName if available, otherwise default to "Unknown"
