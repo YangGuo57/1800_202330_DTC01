@@ -1,7 +1,9 @@
-function displayAverageRating() {
+// Calculate rating
+function displayAverageRating(toiletID) {
   const db = firebase.firestore();
 
   db.collection('reviews')
+    .where('toiletID', '==', toiletID)
     .get()
     .then((querySnapshot) => {
       let totalRating = 0;
@@ -10,14 +12,15 @@ function displayAverageRating() {
       querySnapshot.forEach((doc) => {
         const reviewData = doc.data();
 
-        totalRating += parseFloat(reviewData.cleanlinessRatings) +
+        totalRating +=
+          parseFloat(reviewData.cleanlinessRatings) +
           parseFloat(reviewData.odourRatings) +
           parseFloat(reviewData.safenessRatings) +
           parseFloat(reviewData.accessibleRatings);
         reviewCount++;
       });
 
-      const averageRating = totalRating / (reviewCount * 4);
+      const averageRating = reviewCount > 0 ? totalRating / (reviewCount * 4) : 0;
 
       document.getElementById('averageRating').textContent = averageRating.toFixed(1);
     })
@@ -26,21 +29,23 @@ function displayAverageRating() {
     });
 }
 
-function displayReviews() {
+// Display toilet reviews according to toiletID
+function displayReviews(toiletID) {
   const reviewsContainer = document.getElementById('reviewsContainer');
 
   const db = firebase.firestore();
 
   db.collection('reviews')
+    .where('toiletID', '==', toiletID)
     .get()
     .then((querySnapshot) => {
+      reviewsContainer.innerHTML = '';
 
       querySnapshot.forEach((doc) => {
         const reviewData = doc.data();
 
         const reviewElement = document.createElement('div');
         reviewElement.classList.add('col-md-4', 'mb-4', 'text-center', 'review');
-
 
         reviewElement.innerHTML = `
           <div class="card">
@@ -66,7 +71,6 @@ function displayReviews() {
         reviewsContainer.appendChild(reviewElement);
       });
 
-      // Add this line to update dynamic progress bars
       displayDynamicProgressBars(querySnapshot);
     })
     .catch((error) => {
@@ -74,36 +78,31 @@ function displayReviews() {
     });
 }
 
-// New function to calculate average rating for each category
 function calculateAverageRating(querySnapshot, category) {
   let totalRating = 0;
   let reviewCount = 0;
 
   querySnapshot.forEach((doc) => {
     const reviewData = doc.data();
-
-    // Get the rating for the specified category
     const categoryRating = parseFloat(reviewData[`${category.toLowerCase()}Ratings`]);
 
     totalRating += categoryRating;
     reviewCount++;
   });
 
-  // Return the average rating for the category
   return (totalRating / reviewCount);
 }
 
-// New function to display dynamic progress bars
+// Display dynamic progress bar
 function displayDynamicProgressBars(querySnapshot) {
   const progressContainer = document.querySelector('.review-progress');
-
   const ratingItems = ['Cleanliness', 'Odour', 'Safeness', 'Accessible'];
 
   const categoryColors = {
-    'Cleanliness': 'success',  
-    'Odour': 'danger',         
-    'Safeness': 'warning',     
-    'Accessible': 'info'       
+    'Cleanliness': 'success',
+    'Odour': 'danger',
+    'Safeness': 'warning',
+    'Accessible': 'info'
   };
 
   ratingItems.forEach((item) => {
@@ -130,7 +129,6 @@ function displayDynamicProgressBars(querySnapshot) {
     const progressInnerBar = document.createElement('div');
     progressInnerBar.classList.add('progress-bar', `bg-${categoryColors[item]}`);
 
-
     progressInnerBar.style.width = `${(calculateAverageRating(querySnapshot, item) / 5) * 100}%`;
 
     progressBar.appendChild(progressInnerBar);
@@ -143,6 +141,13 @@ function displayDynamicProgressBars(querySnapshot) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  displayReviews();
-  displayAverageRating();
+  const urlParams = new URLSearchParams(window.location.search);
+  const toiletID = urlParams.get('toiletID');
+
+  if (toiletID) {
+    displayReviews(toiletID);
+    displayAverageRating(toiletID);
+  } else {
+    console.error('ToiletID not found in URL.');
+  }
 });
