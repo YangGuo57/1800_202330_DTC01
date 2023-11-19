@@ -1,8 +1,3 @@
-let params = new URL(window.location.href);
-console.log(params.toString());
-let ID = params.searchParams.get("docID");
-console.log(ID);
-
 document.addEventListener('DOMContentLoaded', function () {
   const submitButton = document.querySelector('.add-review button');
   submitButton.addEventListener('click', () => {
@@ -30,32 +25,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (currentUser) {
       const userId = currentUser.uid;
-      const userName = currentUser.displayName || "Unknown"; // Use displayName if available, otherwise default to "Unknown"
+      const userName = currentUser.displayName || 'Unknown'; // Use displayName if available, otherwise default to "Unknown"
+      const params = new URL(window.location.href);
+      const ID = params.searchParams.get('docID'); // Get the toilet ID from URL
 
-      // Add the review to Firestore
-      db.collection('reviews')
-        .add({
-          userId: userId,
-          userName: userName,
-          DOCId: ID,
-          cleanlinessRatings: cleanlinessRatings.join(','),
-          odourRatings: odourRatings.join(','),
-          safenessRatings: safenessRatings.join(','),
-          accessibleRatings: accessibleRatings.join(','),
-          comment: comment,
-        })
-        .then((docRef) => {
-          console.log('Review added with ID: ', docRef.id);
-          // Clear the textarea
-          commentTextarea.value = '';
-          clearRatings('rating1');
-          clearRatings('rating2');
-          clearRatings('rating3');
-          clearRatings('rating4');
-
+      // Get toilet data to retrieve the toilet ID
+      db.collection('toilets')
+        .doc(ID)
+        .get()
+        .then((toiletDoc) => {
+          const toiletID = toiletDoc.id; // Retrieve the toilet ID
+          // Add the review to Firestore with the corresponding toilet ID
+          db.collection('reviews')
+            .add({
+              userId: userId,
+              userName: userName,
+              toiletID: toiletID, // Use the retrieved toilet ID here
+              cleanlinessRatings: cleanlinessRatings.join(','),
+              odourRatings: odourRatings.join(','),
+              safenessRatings: safenessRatings.join(','),
+              accessibleRatings: accessibleRatings.join(','),
+              comment: comment,
+            })
+            .then((docRef) => {
+              console.log('Review added with ID: ', docRef.id);
+              // Clear the textarea and ratings after adding the review
+              commentTextarea.value = '';
+              clearRatings('rating1');
+              clearRatings('rating2');
+              clearRatings('rating3');
+              clearRatings('rating4');
+            })
+            .catch((error) => {
+              console.error('Error adding review: ', error);
+            });
         })
         .catch((error) => {
-          console.error('Error adding review: ', error);
+          console.error('Error getting toilet document:', error);
         });
     } else {
       console.error('User not logged in');
