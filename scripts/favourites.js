@@ -18,7 +18,7 @@ function displayCardsDynamically(collection) {
                         let newcard = cardTemplate.content.cloneNode(true);
 
                         //update title and text and image
-                        newcard.querySelector('#ToiletName').innerHTML = title;
+                        newcard.querySelector('#toiletName').innerHTML = title;
                         newcard.querySelector('#location').innerHTML = "Location: " + location;
                         newcard.querySelector('#hours').innerHTML = "Hours: " + toiletWinter;
                         newcard.querySelector('#disability').innerHTML = "Wheelchair Access: " + disability;
@@ -37,52 +37,24 @@ function displayCardsDynamically(collection) {
 
 displayCardsDynamically("favourites");
 
-
-// FOR SHOWING TOILET READ MORE INFO FROM FAV PAGE
-function displayToiletInfo() {
-    let toiletID = localStorage.getItem("toiletId");
-    db.collection("toilets")
-        .doc(toiletID)
-        .get()
-        .then(doc => {
-            thisToilet = doc.data();
-            toiletName = doc.data().name;
-            toiletLocation = doc.data().geo_local_area;
-            toiletAddress = doc.data().address;
-            toiletWheelchair = doc.data().wheel_access;
-            toiletSummer = doc.data().summer_hours;
-            toiletWinter = doc.data().winter_hours;
-            toiletType = doc.data().type;
-
-
-            document.getElementById("toiletName").innerHTML = toiletName;
-            document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
-
-        });
-}
-displayToiletInfo();
-
-//This will delete from Firestore
+// This will delete from Firestore
 function remove(toiletID) {
     const currentUser = firebase.auth().currentUser.uid;
     console.log(toiletID);
 
-    try {
-        db.collection("favourites").where("user", "==", currentUser).get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                    (db.collection("favourites").where("toiletID", "==", toiletID)).get() 
-                    .then (snapshot => {
+    db.collection("favourites").where("user", "==", currentUser).get()
+        .then(snapshot => {
+            snapshot.forEach(doc => {
+                db.collection("favourites").where("toiletID", "==", toiletID).get()
+                    .then(snapshot => {
                         snapshot.forEach(doc => {
-                            db.collection("favourites").doc(doc.id).delete();
-                            document.getElementById("favourite_button").classList.remove("favourited");
-                            location.reload();
+                            db.collection("favourites").doc(doc.id).delete()
+                                .then(() => {
+                                    document.getElementById("favourite-button").classList.remove("favourited");
+                                    location.reload();
+                                })
                         })
                     })
-
-                });
-            });
-        } catch (error) {
-            console.error("Error removing toilet from favorites:", error);
-        }
-    }
+            })
+        })
+};
