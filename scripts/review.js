@@ -1,19 +1,3 @@
-function generateStarRating(rating) {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5;
-
-  let starsHtml = '';
-
-  for (let i = 0; i < fullStars; i++) {
-    starsHtml += '<i class="fas fa-star text-info"></i>';
-  }
-
-  if (halfStar) {
-    starsHtml += '<i class="fas fa-star-half-alt text-info"></i>';
-  }
-
-}
-
 function displayAverageRating() {
   const db = firebase.firestore();
 
@@ -57,7 +41,6 @@ function displayReviews() {
         const reviewElement = document.createElement('div');
         reviewElement.classList.add('col-md-4', 'mb-4', 'text-center', 'review');
 
-        const starsHtml = generateStarRating(reviewData.rating);
 
         reviewElement.innerHTML = `
           <div class="card">
@@ -89,23 +72,6 @@ function displayReviews() {
     .catch((error) => {
       console.error('Error fetching reviews: ', error);
     });
-}
-
-function generateStarRating(rating) {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5;
-
-  let starsHtml = '';
-
-  for (let i = 0; i < fullStars; i++) {
-    starsHtml += '<i class="fas fa-star text-info"></i>';
-  }
-
-  if (halfStar) {
-    starsHtml += '<i class="fas fa-star-half-alt text-info"></i>';
-  }
-
-  return starsHtml;
 }
 
 // New function to calculate average rating for each category
