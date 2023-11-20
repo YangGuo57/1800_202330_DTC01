@@ -6,6 +6,7 @@ function doAll() {
             displayCardsDynamically(user)
         } else {
             console.log("No user is signed in");
+            window.location.href = "login.html";
         }
     });
 }
@@ -23,7 +24,7 @@ function insertNameFromFirestore(user) {
 // Favourited toilets show up in favourites page
 function displayCardsDynamically(user) {
     let cardTemplate = document.getElementById("fav-card-template");
-    currentUser = user.uid;
+    const currentUser = user.uid;
     console.log(currentUser);
     db.collection("favourites").where("user", "==", currentUser).get()
         .then(favouritesSnapshot => {

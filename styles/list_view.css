@@ -18,6 +18,12 @@
   color: #DAFFFB;
 }
 
+.btn:hover {
+  background-color: #04364A;
+  border-radius: 15px;
+  color: #DAFFFB;
+}
+
 .padding {
   padding: 33px;
 }
