@@ -49,6 +49,7 @@ function displayCardsDynamically(collection, userLocation = null) {
             toilets = toilets.sort((a, b) => a.distance - b.distance).slice(0, 10);
         }
 
+        //create toilet cards
         toilets.forEach(toilet => {
             let newcard = cardTemplate.content.cloneNode(true);
             newcard.querySelector('.card-title').innerHTML = toilet.title;
@@ -58,7 +59,19 @@ function displayCardsDynamically(collection, userLocation = null) {
 
             newcard.querySelector('button').id = 'favourite-' + toilet.docID;
             newcard.querySelector('button').onclick = () => updateFavourite(toilet.docID);
-
+            console.log(toilet.docID)
+            db.collection("favourites")
+                .where("user", "==", currentUser)
+                .where("toiletID", "==", toilet.docID)
+                .get()
+                .then(querySnapshot => {
+                    if (!querySnapshot.empty) {
+                        console.log("toilet is favourited");
+                        document.getElementById('favourite-' + toilet.docID).classList.add("favourited");
+                    } else {
+                        console.log("toilet is not favourited");
+                    }
+                });
             document.getElementById(collection + "-go-here").appendChild(newcard);
         });
     })
