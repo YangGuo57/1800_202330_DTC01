@@ -1,62 +1,65 @@
+var currentUser;
+
+function doAll() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            currentUser = user.uid;
+            saveToiletDocID();
+            const toiletDocID = localStorage.getItem("toiletDocID");
+            checkFavourited(toiletDocID);
+        } else {
+            console.log("No user is signed in");
+            window.location.href = "login.html";
+        }
+    });
+}
+doAll();
 
 //On loading the page check if the toilet is favourited and update the button accordingly
-document.addEventListener("DOMContentLoaded", async () => {
-    saveToiletDocID();
-    const userUid = localStorage.getItem("userID");
-    const toiletDocID = localStorage.getItem("toiletDocID");
-    
+function checkFavourited(toiletDocID) {
     const toiletButton = document.getElementById("favourite-button");
 
-    if (toiletDocID) {
-        const querySnapshot = await db.collection("favourites").where("user", "==", userUid).where("toiletID", "==", toiletDocID).get();
-
-        if (!querySnapshot.empty) {
-            console.log("toilet is favourited");
-            toiletButton.classList.add("favourited");
-        } else {
-            console.log("toilet is not favourited");
-            toiletButton.classList.remove("favourited");
-        }
-    }
-});
-
+    db.collection("favourites")
+        .where("user", "==", currentUser)
+        .where("toiletID", "==", toiletDocID)
+        .get()
+        .then(querySnapshot => {
+            if (!querySnapshot.empty) {
+                console.log("toilet is favourited");
+                toiletButton.classList.add("favourited");
+            } else {
+                console.log("toilet is not favourited");
+                toiletButton.classList.remove("favourited");
+            }
+        });
+}
 
 //This will toggle the favourites button and add and delete from Firestore
-document.getElementById("favourite-button").addEventListener("click", async function () {
-    try {
+document.getElementById("favourite-button").addEventListener("click", function () {
+
         const toiletDocID = localStorage.getItem("toiletDocID");
 
-        // Toggle the "favourited" class
         this.classList.toggle("favourited");
 
         if (this.classList.contains("favourited")) {
             // Add the toilet to favourites
-            await db.collection("favourites").add({
-                user: firebase.auth().currentUser.uid,
+            db.collection("favourites").add({
+                user: currentUser,
                 toiletID: toiletDocID
             });
         } else {
             // Remove the toilet from favourites
-            const currentUser = firebase.auth().currentUser;
-            const userUid = currentUser.uid;
-
-            // Query Firestore to find the specific entry
-            const querySnapshot = await db
-                .collection("favourites")
-                .where("user", "==", userUid)
+            db.collection("favourites")
+                .where("user", "==", currentUser)
                 .where("toiletID", "==", toiletDocID)
-                .get();
-
-            // Check if there is a matching entry
-            if (!querySnapshot.empty) {
-                // If a matching entry is found, delete it
-                const docId = querySnapshot.docs[0].id;
-                await db.collection("favourites").doc(docId).delete();
+                .get()
+                .then(querySnapshot => {
+                    if (!querySnapshot.empty) {
+                    const favID = querySnapshot.docs[0].id;
+                    db.collection("favourites").doc(favID).delete();
             }
-        }
-    } catch (error) {
-        console.error("Error during button click:", error);
-    }
+        })
+    } 
 });
 
 // Function to save toiletDocID
