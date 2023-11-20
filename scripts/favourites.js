@@ -1,9 +1,30 @@
-// Favourited toilets show up in favourites page
-function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("fav-card-template");
-    const userUid = localStorage.getItem("userID");
+function doAll() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            console.log(user.uid);
+            insertNameFromFirestore(user);
+            displayCardsDynamically(user)
+        } else {
+            console.log("No user is signed in");
+        }
+    });
+}
+doAll();
 
-    db.collection("favourites").where("user", "==", userUid).get()
+function insertNameFromFirestore(user) {
+    db.collection("users").doc(user.uid).get().then(userDoc => {
+        userName = userDoc.data().name;
+        document.getElementById("name-goes-here").innerHTML = userName + "'s Favourite Toilets";
+    })
+
+}
+
+// Favourited toilets show up in favourites page
+function displayCardsDynamically(user) {
+    let cardTemplate = document.getElementById("fav-card-template");
+    currentUser = user.uid;
+    console.log(currentUser);
+    db.collection("favourites").where("user", "==", currentUser).get()
         .then(favouritesSnapshot => {
             favouritesSnapshot.forEach(favDoc => {
                 var toiletID = favDoc.data().toiletID;
@@ -26,22 +47,19 @@ function displayCardsDynamically(collection) {
                         const favouriteButton = newcard.querySelector('#favourite-button');
                         favouriteButton.classList.toggle("favourited");
                         favouriteButton.addEventListener('click', function () {
-                            remove(toiletID);
+                            remove(toiletID, currentUser);
                         });
 
-                        document.getElementById(collection + "-go-here").appendChild(newcard);
+                        document.getElementById("favourites" + "-go-here").appendChild(newcard);
                     })
             })
         })
 }
 
-displayCardsDynamically("favourites");
+
 
 // This will delete from Firestore
-function remove(toiletID) {
-    const currentUser = firebase.auth().currentUser.uid;
-    console.log(toiletID);
-
+function remove(toiletID, currentUser) {
     db.collection("favourites").where("user", "==", currentUser).get()
         .then(snapshot => {
             snapshot.forEach(doc => {

@@ -1,13 +1,14 @@
+
 //On loading the page check if the toilet is favourited and update the button accordingly
 document.addEventListener("DOMContentLoaded", async () => {
     saveToiletDocID();
-    const currentUser = localStorage.getItem("userID");
+    const userUid = localStorage.getItem("userID");
     const toiletDocID = localStorage.getItem("toiletDocID");
     
     const toiletButton = document.getElementById("favourite-button");
 
     if (toiletDocID) {
-        const querySnapshot = await db.collection("favourites").where("user", "==", currentUser).where("toiletID", "==", toiletDocID).get();
+        const querySnapshot = await db.collection("favourites").where("user", "==", userUid).where("toiletID", "==", toiletDocID).get();
 
         if (!querySnapshot.empty) {
             console.log("toilet is favourited");
