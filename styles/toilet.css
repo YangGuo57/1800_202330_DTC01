@@ -36,4 +36,29 @@ button {
   color: #04364A;
   text-decoration: none;
 }
-  
+
+#reviewsContainer h2 {
+  color: white;
+}
+
+#reviewsContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  border-radius: 20px;
+  width: 97vw;
+}
+
+.review {
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.review-rating {
+  color: #FFDF00;
+  font-size: 2rem;
+}
