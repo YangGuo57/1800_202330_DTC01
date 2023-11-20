@@ -5,16 +5,49 @@
 }
 
 .card{
-   background-color: #DAFFFB ;
+  background-color: white ;
   width: 100%;
   margin: 5px 0;
   height: 100%;
+  border-radius: 20px;
 }
 
 .btn {
-  background-color: #64ccc5;
+  background-color: #04364A;
+  border-radius: 15px;
+  color: #DAFFFB;
 }
 
 .padding {
   padding: 50px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.material-icons.fav-button {
+  color: #64ccc5;
+  text-decoration: none;
+}
+
+/* Apply styling for the "favorited" state */
+.material-icons.fav-button.favourited {
+  color: #04364A;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 5px;
 }

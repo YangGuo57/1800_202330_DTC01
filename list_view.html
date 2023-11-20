@@ -65,10 +65,14 @@
     <template id="toiletCardTemplate">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-location"></p>
-                <p class="card-accessibility"></p>
-                <a class="btn card-href">Read more</a>
+                <div class="title">
+                    <h5 class="card-title"></h5>
+                    <button id="favourite-button" class="material-icons fav-button">favorite</button>
+                </div>
+                <div class="details">
+                    <div><span class="card-location"></span><br><span class="card-accessibility"></span><br></div>
+                    <a class="btn card-href">Read more</a>
+                </div>
             </div>
         </div>
     </template>

@@ -11,6 +11,7 @@ function doAll() {
 }
 doAll();
 
+// This will insert the user's name into the page
 function insertNameFromFirestore(user) {
     db.collection("users").doc(user.uid).get().then(userDoc => {
         userName = userDoc.data().name;
@@ -55,8 +56,6 @@ function displayCardsDynamically(user) {
             })
         })
 }
-
-
 
 // This will delete from Firestore
 function remove(toiletID, currentUser) {
