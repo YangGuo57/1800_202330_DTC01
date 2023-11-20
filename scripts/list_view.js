@@ -1,55 +1,89 @@
 var currentUser;
 
 function doAll() {
+    console.log("doAll function called");
     firebase.auth().onAuthStateChanged(user => {
+        console.log("Auth state changed");
         if (user) {
             currentUser = user.uid;
-            displayCardsDynamically("toilets");
+            navigator.geolocation.getCurrentPosition(position => {
+                console.log("Geolocation success");
+                const userLocation = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                };
+                displayCardsDynamically("toilets", userLocation);
+            }, () => {
+                console.log("Error getting location");
+                // Handle error or proceed without location
+                displayCardsDynamically("toilets");
+            });
         } else {
             console.log("No user is signed in");
             window.location.href = "login.html";
         }
     });
 }
+
 doAll();
 
 //Shows a list view of all toilets
-function displayCardsDynamically(collection) {
+function displayCardsDynamically(collection, userLocation = null) {
     let cardTemplate = document.getElementById("toiletCardTemplate");
+    let toilets = [];
 
     db.collection(collection).get()
-        .then(allToilets => {
-            allToilets.forEach(doc => {
-                var title = doc.data().name;
-                var location = doc.data().geo_local_area;
-                var disability = doc.data().wheel_access;
-                var docID = doc.id;
-                let newcard = cardTemplate.content.cloneNode(true);
+    .then(allToilets => {
+        allToilets.forEach(doc => {
+            let toilet = {
+                docID: doc.id,
+                title: doc.data().name,
+                location: doc.data().geo_local_area,
+                disability: doc.data().wheel_access,
+                distance: userLocation ? calculateDistance(userLocation, doc.data().lat, doc.data().lon) : null
+            };
+            toilets.push(toilet);
+        });
 
-                newcard.querySelector('.card-title').innerHTML = title;
-                newcard.querySelector('.card-location').innerHTML = "Location: " + location;
-                newcard.querySelector('.card-accessibility').innerHTML = "Wheelchair Access: " + disability;
-                newcard.querySelector('a').href = "toilet.html?docID=" + docID;
+        if (userLocation) {
+            toilets = toilets.sort((a, b) => a.distance - b.distance).slice(0, 10);
+        }
 
-                newcard.querySelector('button').id = 'favourite-' + docID;
-                newcard.querySelector('button').onclick = () => updateFavourite(docID);
+        toilets.forEach(toilet => {
+            let newcard = cardTemplate.content.cloneNode(true);
+            newcard.querySelector('.card-title').innerHTML = toilet.title;
+            newcard.querySelector('.card-location').innerHTML = "Location: " + toilet.location;
+            newcard.querySelector('.card-accessibility').innerHTML = "Wheelchair Access: " + toilet.disability;
+            newcard.querySelector('a').href = "toilet.html?docID=" + toilet.docID;
 
-                //On loading the page check if the toilet is favourited and update the button accordingly
-                db.collection("favourites")
-                    .where("user", "==", currentUser)
-                    .where("toiletID", "==", docID)
-                    .get()
-                    .then(querySnapshot => {
-                        if (!querySnapshot.empty) {
-                            console.log("toilet is favourited");
-                            newcard.querySelector('button').classList.toggle("favourited");
-                        } else {
-                            console.log("toilet is not favourited");
-                        }
-                document.getElementById(collection + "-go-here").appendChild(newcard);
-            })
-        })
-})}
+            newcard.querySelector('button').id = 'favourite-' + toilet.docID;
+            newcard.querySelector('button').onclick = () => updateFavourite(toilet.docID);
+
+            document.getElementById(collection + "-go-here").appendChild(newcard);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching documents: ", error);
+    });
+}
+
+function calculateDistance(userLocation, lat, lon) {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = degreesToRadians(lat - userLocation.latitude);
+    const dLon = degreesToRadians(lon - userLocation.longitude); 
+    const a = 
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(degreesToRadians(userLocation.latitude)) * Math.cos(degreesToRadians(lat)) * 
+        Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+    const distance = R * c;
+    return distance;
+}
+
+function degreesToRadians(degrees) {
+    return degrees * (Math.PI / 180);
+}
+
 
 //This will toggle the favourites button and add and delete from Firestore
 function updateFavourite(docID) {
