@@ -4,12 +4,12 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 95vw !important;
+  width: 82vw !important;
   max-width: none !important;
 }
 
-.mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--input {
-  width: calc(100% - 50px);
+.mapboxgl-ctrl-top-right {
+  display: flex;
 }
 
 .mapboxgl-popup-content {
@@ -33,4 +33,11 @@
 button a {
   color: white;
   text-decoration: none;
+}
+
+.mapboxgl-ctrl-group button {
+  color: #04364A;
+  width: 50px;
+  font-size: 2.0rem;
+  height: 50px;
 }
