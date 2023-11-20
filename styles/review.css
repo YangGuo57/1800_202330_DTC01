@@ -51,18 +51,6 @@
   text-align: left;
 }
 
-/* add review button */
-.add-review {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.add-review button {
-  background-color: #64CCC5;
-  color: white;
-  width: 90%;
-}
-
 .card {
   background-color: #ffffff !important;
 }
