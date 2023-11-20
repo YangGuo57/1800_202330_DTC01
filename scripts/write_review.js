@@ -80,3 +80,14 @@ function getRatings(radioGroupName) {
   const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);
   return Array.from(selectedRadios, (radio) => radio.value);
 }
+
+// Add an event listener to the close button of the success modal
+const closeSuccessModalButton = document.getElementById('closeSuccessModalButton');
+closeSuccessModalButton.addEventListener('click', () => {
+  // Get the toilet ID from the URL
+  const params = new URLSearchParams(window.location.search);
+  const toiletID = params.get('docID');
+
+  // Redirect to the toilets page with the toilet ID as a query parameter
+  window.location.href = `toilet.html?docID=${toiletID}`; // Replace with your toilets page URL
+});
