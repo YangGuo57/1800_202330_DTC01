@@ -17,7 +17,7 @@ doAll();
 function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("toiletCardTemplate");
 
-    db.collection(collection).limit(10).get()
+    db.collection(collection).get()
         .then(allToilets => {
             allToilets.forEach(doc => {
                 var title = doc.data().name;

@@ -1,18 +1,12 @@
 /* favourites */
-.fav-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-}
-
 .fav-card {
-  margin: 20px 20px 0px 20px;
+  margin: 10px 12px 0px 12px;
   background-color: white;
   color: #04364A;
   padding: 10px 5px 5px 5px;
   border-radius: 20px;
   display: flex;
-  border: 3px solid #64ccc5;
+  border: none
 }
 
 .favourite {
@@ -37,7 +31,6 @@
 .fav-text {
   padding-left: 15%;
   line-height: 1.3;
-  /* font-weight: 100; */
 }
 
 button {
@@ -46,8 +39,7 @@ button {
   padding: 2px 8px;
   margin: 2px;
   font-size: 15px;
-  /* font-weight: 100; */
-  background-color: #DAFFFB;
+  background-color: white;
 }
 
 .card-button {
@@ -55,8 +47,8 @@ button {
 }
 
 .card-button button {
-  color: #04364A;
-  background-color: #64ccc5;
+  color: #DAFFFB;
+  background-color: #04364A;
 }
 
 .col {
@@ -65,7 +57,6 @@ button {
 
 h2 {
   padding-left: 10%;
-
 }
 
 /* unfavourited */
@@ -80,13 +71,8 @@ h2 {
   text-decoration: none;
 }
 
-.toilet-card {
-  background-color: #DAFFFB;
-  border-radius: 20px;
-}
-
 .padding {
-  padding: 50px;
+  padding: 33px;
 }
 
 #name-goes-here {
