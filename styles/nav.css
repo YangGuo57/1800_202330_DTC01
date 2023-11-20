@@ -1,6 +1,4 @@
-
 /* Header */
-
 button .btn {
     border: none;
 }
@@ -22,7 +20,6 @@ footer .btn {
     margin: 0px 0px;
     color: #64CCC5;
 }
-
 
 .navbar .d-flex {
     align-items: center !important;
@@ -54,15 +51,11 @@ footer .btn {
 }
 
 .navbar-brand {
-    background-color: white;
     margin: 0;
     padding: 5px;
-    border-radius: 10px;
-
 }
 
 /* Footer */
-
 footer {
     padding: 0px !important;
     height: 60px;

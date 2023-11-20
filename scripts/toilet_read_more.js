@@ -19,7 +19,7 @@ function displayToiletInfo() {
             document.getElementById("toiletName").innerHTML = toiletName;
             document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
             document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn'>Add Review</a>";
-            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + ID + "' class='btn'>More Review</a>";
+            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + ID + "' class='btn'>All Reviews</a>";
         });
 }
 displayToiletInfo();
