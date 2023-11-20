@@ -140,6 +140,7 @@ function displayDynamicProgressBars(querySnapshot) {
   });
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
   const toiletID = urlParams.get('toiletID');
@@ -148,6 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
     displayReviews(toiletID);
     displayAverageRating(toiletID);
   } else {
-    console.error('ToiletID not found in URL.');
+    console.error('ToiletID not found in URL or write review button not found.');
   }
 });
