@@ -18,7 +18,7 @@ function populateUserInfo() {
                     if (userCountry != null) {
                         document.getElementById("countryInput").value = userCountry;
                     }
-                    if (userCountry != null) {
+                    if (userEmail != null) {
                         document.getElementById("emailInput").value = userEmail;
                     }
                 })
@@ -27,8 +27,6 @@ function populateUserInfo() {
         }
     });
 }
-
-
 populateUserInfo();
 
 function editUserInfo() {

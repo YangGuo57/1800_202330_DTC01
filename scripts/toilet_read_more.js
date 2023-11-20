@@ -2,7 +2,6 @@
 function displayToiletInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
-    console.log(ID);
 
     db.collection("toilets")
         .doc(ID)
