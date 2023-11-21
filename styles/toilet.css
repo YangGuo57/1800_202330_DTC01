@@ -27,7 +27,7 @@ button {
 }
 
 .material-icons.fav-button {
-  color: #64ccc5;
+  color: #c8f7f2;
   text-decoration: none;
 }
   
@@ -59,6 +59,10 @@ button {
 }
 
 .review-rating {
-  color: #FFDF00;
+  color: #04364A;
   font-size: 2rem;
+}
+
+.padding {
+  padding: 33px;
 }
