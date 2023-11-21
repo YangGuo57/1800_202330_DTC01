@@ -51,7 +51,7 @@ function displayReviews(toiletID) {
           <div class="card">
             <div class="card-body py-01 mt-0">
               <div class="d-flex align-items-left mb-">
-                <div class="user-icon"><img src="${reviewData.userIcon}" class="rounded-circle shadow-1-strong" width="100" height="100" /></div>
+                <div class="user-icon"><img src="../images/user-icon.png" class="rounded-circle shadow-1-strong" width="100" height="100" /></div>
                 <div class="d-flex flex-column ">
                   <p class="name">${reviewData.userName}</p>
                   <div class="stars-days">
