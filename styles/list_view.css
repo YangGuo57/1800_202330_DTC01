@@ -1,31 +1,20 @@
 .container h1 {
   color: white;
   margin: 10px;
-  ;
+  font-weight: bold;
 }
 
+h5 {
+  font-weight: bold;
+}
+
+/* TOILET CARDS CSS */
 .card{
   background-color: white ;
   width: 100%;
   margin: 5px 0;
   height: 100%;
   border-radius: 20px;
-}
-
-.btn {
-  background-color: #04364A;
-  border-radius: 15px;
-  color: #DAFFFB;
-}
-
-.btn:hover {
-  background-color: #04364A;
-  border-radius: 15px;
-  color: #DAFFFB;
-}
-
-.padding {
-  padding: 33px;
 }
 
 .title {
@@ -40,25 +29,30 @@
   justify-content: space-between;
 }
 
+.padding {
+  padding: 33px;
+}
+
+/* REGULAR BUTTONS CSS */
+.btn, .btn:hover {
+  background-color: #04364A;
+  border-radius: 15px;
+  color: #DAFFFB;
+  height: 40px;
+}
+
+/* FAVOURITE BUTTON CSS */
 .material-icons.fav-button {
-  color: #64ccc5;
+  color: #c8f7f2;
   text-decoration: none;
 }
 
-/* Apply styling for the "favorited" state */
 .material-icons.fav-button.favourited {
   color: #04364A;
   text-decoration: none;
 }
 
-button {
-  border: none;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: white;
-  margin: 5px;
-}
-
-h5 {
-  font-weight: bold;
+.material-symbols-outlined {
+  color: #04364A;
+  text-decoration: none;
 }
