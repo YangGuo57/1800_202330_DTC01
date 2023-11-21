@@ -22,7 +22,7 @@ function displayAverageRating(toiletID) {
 
       const averageRating = reviewCount > 0 ? totalRating / (reviewCount * 4) : 0;
 
-      document.getElementById('averageRating').textContent = averageRating.toFixed(1);
+      document.getElementById('averageRating').textContent = averageRating.toFixed(1) + "/5";
     })
     .catch((error) => {
       console.error('Error fetching reviews: ', error);
@@ -99,9 +99,9 @@ function displayDynamicProgressBars(querySnapshot) {
   const ratingItems = ['Cleanliness', 'Odour', 'Safeness', 'Accessible'];
 
   const categoryColors = {
-    'Cleanliness': 'success',
-    'Odour': 'danger',
-    'Safeness': 'warning',
+    'Cleanliness': 'info',
+    'Odour': 'info',
+    'Safeness': 'info',
     'Accessible': 'info'
   };
 
