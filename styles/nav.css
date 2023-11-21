@@ -7,7 +7,7 @@ button .btn {
     background-color: #176B87 !important;
 }
 
-.text-decoration-none .btn{
+.text-decoration-none .btn {
     font-size: 2.5rem;
     padding: 0;
     color: #64CCC5;
@@ -55,6 +55,17 @@ footer .btn {
     padding: 5px;
 }
 
+.navbar-brand img{
+    width: 100px;
+}
+
+.appName {
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
 /* Footer */
 footer {
     padding: 0px !important;
@@ -75,6 +86,7 @@ footer a.material-icons {
     justify-content: space-around;
     align-items: center;
 }
+
 .footer .btn {
     padding: 0;
     margin-top: 10px;
