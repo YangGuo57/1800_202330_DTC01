@@ -57,6 +57,7 @@ function displayCardsDynamically(collection, userLocation = null) {
             newcard.querySelector('.card-title').innerHTML = toilet.title;
             newcard.querySelector('.card-location').innerHTML = "Location: " + toilet.location;
             newcard.querySelector('.card-accessibility').innerHTML = "Wheelchair Access: " + toilet.disability;
+            newcard.querySelector('.card-distance').innerHTML = userLocation ? "Distance: " + toilet.distance.toFixed(2) + " km" : "";
             newcard.querySelector('a').href = "toilet.html?docID=" + toilet.docID;
 
             newcard.querySelector('button').id = 'favourite-' + toilet.docID;
