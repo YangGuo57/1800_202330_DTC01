@@ -43,10 +43,12 @@ function displayCardsDynamically(collection, userLocation = null) {
                 distance: userLocation ? calculateDistance(userLocation, doc.data().lat, doc.data().lon) : null
             };
             toilets.push(toilet);
+            console.log(toilet.distance);
         });
 
         if (userLocation) {
             toilets = toilets.sort((a, b) => a.distance - b.distance).slice(0, 10);
+    
         }
 
         //create toilet cards
