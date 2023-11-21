@@ -42,13 +42,24 @@ h5 {
 }
 
 /* FAVOURITE BUTTON CSS */
-.material-icons.fav-button {
-  color: #c8f7f2;
-  text-decoration: none;
-}
-
-.material-icons.fav-button.favourited {
+.material-symbols-outlined.fav-button {
   color: #04364A;
   text-decoration: none;
 }
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+.material-symbols-outlined.favourited {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
 
