@@ -3,7 +3,7 @@ const defaultCenter = [-123.11499773770726, 49.28378165988785];
 
 function createMyLocationControl() {
   return {
-    onAdd: function(map) {
+    onAdd: function (map) {
       this._map = map;
       this._container = document.createElement('div');
       this._container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group mapbox-control-container';
@@ -13,14 +13,14 @@ function createMyLocationControl() {
       this._button.className = 'mapboxgl-ctrl-icon mapboxgl-ctrl-my-location material-icons';
       this._button.type = 'button';
 
-      this._button.onclick = function() {
+      this._button.onclick = function () {
         if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          navigator.geolocation.getCurrentPosition(function (position) {
             map.flyTo({
               center: [position.coords.longitude, position.coords.latitude],
               zoom: 15
             });
-          }, function(error) {
+          }, function (error) {
             console.error('Error occurred while retrieving location:', error);
           });
         } else {
@@ -33,7 +33,7 @@ function createMyLocationControl() {
       return this._container;
     },
 
-    onRemove: function() {
+    onRemove: function () {
       this._container.parentNode.removeChild(this._container);
       this._map = undefined;
     }
@@ -70,6 +70,8 @@ function initializeMap(center) {
           var title = doc.data().name;
           var location = doc.data().geo_local_area;
           var disability = doc.data().wheel_access;
+          if (disability == "Yes") { disability = '<span class="material-icons disability">accessible</span>' }
+          else if (disability == "No") { disability = '<span class="material-icons disability">not_accessible</span>' }
 
           let markerLocation = [lon, lat];
 
@@ -81,10 +83,14 @@ function initializeMap(center) {
             .setHTML(`
               <div class = "popup">
                 <strong class="popup-title">${title}</strong><br>
-                Location: ${location}<br>
-                Wheelchair Access: ${disability}
+                Location: ${location}
               </div>
-              <button class="more-info-button"><a href="toilet.html?docID=${docID}">More Info</a></button>
+              <div class="popup-buttons">
+              
+              <button class="disability-button"><span class="material-icons">${disability}</span></button>
+                <button class="more-info-button"><a href="toilet.html?docID=${docID}"><span class="material-icons">more_horiz</span></a></button>
+                <button class="navigate-button"><a href="navigate.html?docID=${docID}"><span class="material-icons">directions</span></a></button>
+              </div>
             `);
 
           marker.setPopup(popup);
@@ -96,7 +102,7 @@ function initializeMap(center) {
 
         // Check if the Geolocation API is available
         if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          navigator.geolocation.getCurrentPosition(function (position) {
             // Get user's current position
             const userLocation = [position.coords.longitude, position.coords.latitude];
 
@@ -110,7 +116,7 @@ function initializeMap(center) {
               zoom: 15
             });
 
-          }, function(error) {
+          }, function (error) {
             console.error('Error occurred while retrieving location: ', error);
           });
         } else {
@@ -121,9 +127,9 @@ function initializeMap(center) {
 }
 
 if ('geolocation' in navigator) {
-  navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function (position) {
     initializeMap([position.coords.longitude, position.coords.latitude]);
-  }, function(error) {
+  }, function (error) {
     console.error('Error occurred while retrieving location:', error);
     initializeMap(defaultCenter);
   });

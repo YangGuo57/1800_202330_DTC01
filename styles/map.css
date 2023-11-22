@@ -13,21 +13,35 @@
 }
 
 .mapboxgl-popup-content {
-  background-color: #DAFFFB;
+  background-color: white;
+  border-radius: 20px;
+  width: 200px;
 }
 
 .mapboxgl-popup-close-button {
   width: 20px;
+  font-size: 20px;
+  margin: 5px 5px;
 }
 
-.more-info-button {
-  border-radius: 10%;
-  background-color: none;
-  border: 1px solid white;
+.more-info-button,
+.navigate-button, .disability-button {
+  border-radius: 20%;
+  padding: 5px;
   font-size: 8px;
-  padding: 0 1px;
   color: white;
   background-color: #176B87;
+  border: none;
+  height: 35px;
+  margin: 0px 5px 0px 0px;
+}
+
+.disability-button {
+  background-color: rgb(17, 21, 36);
+}
+
+.disability-button:hover {
+  cursor: default;
 }
 
 button a {
@@ -37,7 +51,12 @@ button a {
 
 .mapboxgl-ctrl-group button {
   color: #04364A;
-  width: 50px;
   font-size: 2.0rem;
   height: 50px;
+}
+
+.popup-buttons {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }

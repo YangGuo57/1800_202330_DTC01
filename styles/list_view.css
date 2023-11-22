@@ -33,6 +33,18 @@ h5 {
   padding: 33px;
 }
 
+.icons {
+  display: flex;
+}
+
+.card-accessibility{
+padding-top: 5px;
+}
+
+.card-distance{
+  font-weight: bold;
+}
+
 /* REGULAR BUTTONS CSS */
 .btn, .btn:hover {
   background-color: #04364A;
