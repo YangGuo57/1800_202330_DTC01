@@ -16,14 +16,14 @@ doAll();
 function insertNameFromFirestore(user) {
     db.collection("users").doc(user.uid).get().then(userDoc => {
         userName = userDoc.data().name;
-        document.getElementById("name-goes-here").innerHTML = userName + "'s Favourite Toilets";
+        document.getElementById("name-goes-here").innerHTML = `<h1> ${userName}'s Favourites</h1>`;
     })
 
 }
 
 // Favourited toilets show up in favourites page
 function displayCardsDynamically(user) {
-    let cardTemplate = document.getElementById("fav-card-template");
+    let cardTemplate = document.getElementById("favCardTemplate");
     const currentUser = user.uid;
     console.log(currentUser);
     db.collection("favourites").where("user", "==", currentUser).get()
@@ -37,14 +37,16 @@ function displayCardsDynamically(user) {
                         var disability = toiletDoc.data().wheel_access;
                         var toiletWinter = toiletDoc.data().winter_hours;
                         localStorage.setItem('toiletId', toiletID);
+                        if (disability == "Yes") {disability = '<span class="material-symbols-outlined">accessible</span>'}
+                        else if (disability == "No") {disability = '<span class="material-symbols-outlined">not_accessible</span>'}
 
                         let newcard = cardTemplate.content.cloneNode(true);
 
                         //update title and text and image
-                        newcard.querySelector('#toiletName').innerHTML = title;
-                        newcard.querySelector('#location').innerHTML = "Location: " + location;
-                        newcard.querySelector('#hours').innerHTML = "Hours: " + toiletWinter;
-                        newcard.querySelector('#disability').innerHTML = "Wheelchair Access: " + disability;
+                        newcard.querySelector('.card-title').innerHTML = title;
+                        newcard.querySelector('.card-location').innerHTML = location;
+                        newcard.querySelector('.card-accessibility').innerHTML = disability;
+                        newcard.querySelector('.card-distance').innerHTML = "distance placeholder";
                         newcard.querySelector('#more-info').href = "toilet.html?docID=" + toiletID;
                         const favouriteButton = newcard.querySelector('#favourite-button');
                         favouriteButton.classList.toggle("favourited");

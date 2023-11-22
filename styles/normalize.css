@@ -21,18 +21,13 @@ body {
     background-color: #04364A;
 }
 
-
-h1,
-h2,
-h3
- {
-	
+h1{
+    color: white;
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
 }
 
-p {
-	
-}
-
-a {
-
+h5 {
+    font-weight: bold;
 }

@@ -1,68 +1,54 @@
-/* favourites */
-.fav-card {
-  margin: 10px 12px 0px 12px;
-  background-color: white;
-  color: #04364A;
-  padding: 10px 5px 5px 5px;
+/* TOILET CARDS CSS */
+.card{
+  background-color: white ;
+  width: 100%;
+  margin: 5px 0;
+  height: 100%;
   border-radius: 20px;
+}
+
+.title {
   display: flex;
-  border: none
+  justify-content: space-between;
+  align-items: center;
 }
 
-.favourite {
+.details {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.imagey {
-  width: 40vh;
-  padding: 5px;
-  text-align: center;
-
+.padding {
+  padding: 33px;
 }
 
-.texty {
+.icons {
   display: flex;
-  flex-direction: column;
-  width: 70vh !important;
-  padding: 5px;
 }
 
-.fav-text {
-  padding-left: 15%;
-  line-height: 1.3;
+.card-accessibility{
+padding-top: 5px;
 }
 
-button {
-  border: none;
-  border-radius: 10px;
-  padding: 2px 8px;
-  margin: 2px;
-  font-size: 15px;
-  background-color: white;
+.card-distance{
+  font-weight: bold;
 }
 
-.card-button {
-  padding: 5px 10px 0px 10px;
-}
-
-.card-button button {
-  color: #DAFFFB;
+/* REGULAR BUTTONS CSS */
+.btn, .btn:hover {
   background-color: #04364A;
-}
-
-.col {
-  flex: 0 0 0%;
-}
-
-h2 {
-  padding-left: 10%;
+  border-radius: 15px;
+  color: #DAFFFB;
+  height: 40px;
 }
 
 /* FAVOURITE BUTTON CSS */
 .material-symbols-outlined.fav-button {
   color: #04364A;
   text-decoration: none;
+  background-color: white;
+  border: none;
 }
 
 .material-symbols-outlined {
@@ -72,7 +58,6 @@ h2 {
     'GRAD' 0,
     'opsz' 24
 }
-
 .material-symbols-outlined.favourited {
   font-variation-settings:
     'FILL' 1,
@@ -81,13 +66,4 @@ h2 {
     'opsz' 24
 }
 
-.padding {
-  padding: 33px;
-}
 
-#name-goes-here {
-  font-size: 20px;
-  color: #DAFFFB;
-  text-align: center;
-  padding: 10px
-} 

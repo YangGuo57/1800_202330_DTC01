@@ -55,32 +55,45 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
-    <div id="name-goes-here"></div>
-    <!-- populate a list of favourites from user favourite list -->
-    <div id="favourites-go-here"></div>
-
-    <div class="padding"></div>
-    <!-- toilet card template -->
-    <!-- 
-        replace with info from Firestore:
-            toiletName
-            ToiletDetails 
-        -->
-    <template id="fav-card-template">
-        <div class="fav-card">
-            <div class="texty">
-                <h2 id="toiletName"></h2>
-                <div class="fav-text">
-                    <p><span id="location"></span><br><span id="hours"></span><br><span id="disability"></span></p>
-                </div>
+    <div class="container">
+        <h1 id="name-goes-here"></h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="favourites-go-here" class="row row-cols-auto">
             </div>
-            <div class="imagey">
-                <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button>
-                <div class="card-button"><a id="more-info"><button>More Info</button></a></div>
-                <div class="card-button"><a id="navigate"><button>Navigate</button></a></div>
+        </div>
+    </div>
+  
+    <!-- toilet card template -->
+    <template id="favCardTemplate">
+        <div class="card">
+            <div class="card-body">
+                <div class="title">
+                    <h5 class="card-title"></h5>
+                    <div class="icons">
+                        <span class="card-accessibility"></span><br>
+                        <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button>
+                    </div>
+                </div>
+                <div class="details">
+                    <div>
+                        <span class="card-location"></span><br>
+                        <span class="card-distance"></span><br>
+                    </div>
+                    <div class="links">
+                        <a class="btn card-href" id="more-info"><span class="material-icons">
+                                more_horiz
+                            </span></a>
+                        <a class="btn card-href" id="navigate"><span class="material-icons direction">
+                                directions
+                            </span></a>
+                    </div>
+                </div>
             </div>
         </div>
     </template>
+
+    <div class="padding"></div>
 
     <!-- Footer html -->
     <nav id="footerPlaceholder"></nav>
