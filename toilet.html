@@ -55,27 +55,34 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
-    <div class="container toilet-card">
-        <h1><span id="toiletName"></span></h1>
-        <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button>
-        <div id="details-go-here"></div>
-        <div>
-            <button id="more-review"></button>
-            <button id="add-review"></button>
+    <div id="container">
+        <div id="container">
+            <div class="toilet-card">
+                <h5 id="toiletName"></h5>
+                <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button>
+                <div id="details-go-here"></div>
+                <div class="review-buttons">
+                    <div id="more-review"></div>
+                    <div id="add-review"></div>
+                </div>
+        </div>
+        
+        <div id="reviewsContainer">
+            <h5 id="review-title">Recent Reviews</h5>
         </div>
     </div>
+
     <template id="reviewTemplate">
-        <div class="review">
-            <h3 class="review-user"></h3>
-            <p class="review-rating"></p>
-            <p class="review-comment"></p>
+        <div class="container review-card">
+            <h5 class="review-user"></h5>
+            <div class="review-rating"></div>
+            <div class="review-comment"></div>
+        </div>
         </div>
     </template>
-    
-    <div id="reviewsContainer">
-        <h2>Recent Reviews</h2>
-    </div>
-        <div class="padding"></div>
+
+    <div class="padding"></div>
+
     <!-- Footer html -->
     <nav id="footerPlaceholder"></nav>
 

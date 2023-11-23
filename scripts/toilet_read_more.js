@@ -8,7 +8,6 @@ function displayToiletInfo() {
         .doc(ID)
         .get()
         .then(doc => {
-            thisToilet = doc.data();
             toiletName = doc.data().name;
             toiletLocation = doc.data().geo_local_area;
             toiletAddress = doc.data().address;
@@ -19,8 +18,8 @@ function displayToiletInfo() {
 
             document.getElementById("toiletName").innerHTML = toiletName;
             document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
-            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn'>Add Review</a>";
-            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + ID + "' class='btn'>All Reviews</a>";
+            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn review'>Add Review</a>";
+            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + ID + "' class='btn review'>All Reviews</a>";
         });
 }
 displayToiletInfo();
