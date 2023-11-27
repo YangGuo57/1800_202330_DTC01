@@ -1,7 +1,6 @@
 var currentUser;
 
 function doAll() {
-    console.log("doAll function called");
     firebase.auth().onAuthStateChanged(user => {
         console.log("Auth state changed");
         if (user) {
@@ -15,7 +14,6 @@ function doAll() {
                 displayCardsDynamically("toilets", userLocation);
             }, () => {
                 console.log("Error getting location");
-                // Handle error or proceed without location
                 displayCardsDynamically("toilets");
             });
         } else {
@@ -24,7 +22,6 @@ function doAll() {
         }
     });
 }
-
 doAll();
 
 //Shows a list view of all toilets
