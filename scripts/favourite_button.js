@@ -33,9 +33,7 @@ function checkFavourited(toiletDocID) {
 
 //This will toggle the favourites button and add and delete from Firestore
 document.getElementById("favourite-button").addEventListener("click", function () {
-
         const toiletDocID = localStorage.getItem("toiletDocID");
-
         this.classList.toggle("favourited");
 
         if (this.classList.contains("favourited")) {
