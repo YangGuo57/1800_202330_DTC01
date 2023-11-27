@@ -66,6 +66,11 @@ footer .btn {
     font-size: 18px;
 }
 
+.list-group-item {
+    border: none;
+    background-color: #64ccc5;
+}   
+
 /* Footer */
 footer {
     padding: 0px !important;
