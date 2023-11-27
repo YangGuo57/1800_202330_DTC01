@@ -44,6 +44,7 @@ function displayReviews(toiletID) {
                 // Populate the template with data
                 newReview.querySelector('.review-user').textContent = review.userName;
                 newReview.querySelector('.review-rating').textContent = starRating; // Display star rating
+                newReview.querySelector('.review-title').textContent = review.title;
                 newReview.querySelector('.review-comment').textContent = review.comment;
 
                 reviewsContainer.appendChild(newReview);

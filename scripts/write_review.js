@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const safenessRatings = getRatings('rating3');
     const accessibleRatings = getRatings('rating4');
     const commentTextarea = document.getElementById('floatingTextarea2');
+    const titleTextarea = document.getElementById('floatingTextarea1');
     const comment = commentTextarea.value;
+    const title = titleTextarea.value;
 
     const currentUser = firebase.auth().currentUser;
 
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
               odourRatings: odourRatings.join(','),
               safenessRatings: safenessRatings.join(','),
               accessibleRatings: accessibleRatings.join(','),
+              title: title,
               comment: comment,
             })
             .then((docRef) => {

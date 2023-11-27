@@ -4,20 +4,22 @@
 }
 
 .review-progress {
-  padding: 0 50px;
+  padding: 0 20px;
 }
 
 .review-title {
   text-align: left;
+  font-size: 20px;
+
 }
 
-.review-title {
-  font-size: 20px;
+.review-heading {
+  margin-bottom: 10px;
 }
 
 /* add review button */
 .add-review {
-  margin: 50px 0;
+  margin: 15px 0;
   text-align: center;
 }
 

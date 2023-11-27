@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.mapboxgl-ctrl-icon {
+  width: 40px!important;
+}
+
 .mapboxgl-ctrl-geocoder {
   width: 82vw !important;
   max-width: none !important;
@@ -22,6 +26,18 @@
   width: 20px;
   font-size: 20px;
   margin: 5px 5px;
+}
+
+.mapboxgl-ctrl-group button {
+  color: #04364A;
+  font-size: 2.0rem;
+  height: 50px;
+}
+
+.popup-buttons {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
 .more-info-button,
@@ -47,16 +63,4 @@
 button a {
   color: white;
   text-decoration: none;
-}
-
-.mapboxgl-ctrl-group button {
-  color: #04364A;
-  font-size: 2.0rem;
-  height: 50px;
-}
-
-.popup-buttons {
-  display: flex;
-  align-items: center;
-  padding: 10px;
 }
