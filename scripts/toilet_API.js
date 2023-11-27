@@ -5,7 +5,7 @@
 function add_toilets(toilets) {
     var toiletsRef = db.collection("toilets");
     for (i = 0; i < toilets.results.length; i++) {
-        toiletsRef.add({ //add to database, autogen ID
+        toiletsRef.add({ 
             name: toilets.results[i].name,
             address: toilets.results[i].address,
             type: toilets.results[i].type,
@@ -16,7 +16,6 @@ function add_toilets(toilets) {
             geo_local_area: toilets.results[i].geo_local_area,
             lon: toilets.results[i].geo_point_2d.lon,
             lat: toilets.results[i].geo_point_2d.lat,
-            // last_updated: firebase.firestore.FieldValue.serverTimestamp()
         })
     }
 }

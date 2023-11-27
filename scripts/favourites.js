@@ -1,29 +1,10 @@
 var currentUser;
 
-// function doAll() {
-//     firebase.auth().onAuthStateChanged(user => {
-//         if (user) {
-//             const userLocation = {
-//                 latitude: position.coords.latitude,
-//                 longitude: position.coords.longitude
-//             };
-//             insertNameFromFirestore(user);
-//             displayCardsDynamically(user, userLocation)
-//         } else {
-//             console.log("No user is signed in");
-//             window.location.href = "login.html";
-//         }
-//     });
-// }
-// doAll();
-
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
-        console.log("Auth state changed");
         if (user) {
             currentUser = user.uid;
             navigator.geolocation.getCurrentPosition(position => {
-                console.log("Geolocation success");
                 const userLocation = {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
@@ -69,7 +50,6 @@ async function displayCardsDynamically(currentUser, userLocation = null) {
                 disability: toiletDoc.data().wheel_access,
                 distance: userLocation ? calculateDistance(userLocation, toiletDoc.data().lat, toiletDoc.data().lon) : null
             };
-
             toilets.push(toilet);
         }
 

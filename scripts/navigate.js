@@ -15,9 +15,7 @@ db.collection("toilets")
             center: [lon, lat],
             zoom: 15
         });
-    });
-
-
+});
 
 map.addControl(
     new MapboxGeocoder({
@@ -33,12 +31,8 @@ map.on('load', function () {
         .doc(toiletID)
         .get()
         .then(doc => {
-                // var docID = doc.id;
                 var lon = doc.data().lon;
                 var lat = doc.data().lat;
-                // var title = doc.data().name;
-                // var location = doc.data().geo_local_area;
-                // var disability = doc.data().wheel_access;
 
                 let markerLocation = [lon, lat];
 

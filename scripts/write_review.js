@@ -1,3 +1,4 @@
+//Review form for users to submit reviews
 document.addEventListener('DOMContentLoaded', function () {
   const submitButton = document.querySelector('.add-review button');
   submitButton.addEventListener('click', () => {
@@ -15,11 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to set default rating if no rating is selected
     const setDefaultRating = (ratingsArray) => {
       if (ratingsArray.length === 0) {
-        ratingsArray.push('1'); // Set default rating to 1
+        ratingsArray.push('1'); 
       }
     };
 
-    // Set default ratings if no ratings are selected
     setDefaultRating(cleanlinessRatings);
     setDefaultRating(odourRatings);
     setDefaultRating(safenessRatings);
@@ -27,22 +27,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (currentUser) {
       const userId = currentUser.uid;
-      const userName = currentUser.displayName || 'Unknown'; // Use displayName if available, otherwise default to "Unknown"
+      const userName = currentUser.displayName || 'Unknown';
       const params = new URL(window.location.href);
-      const ID = params.searchParams.get('docID'); // Get the toilet ID from URL
+      const ID = params.searchParams.get('docID');
 
-      // Get toilet data to retrieve the toilet ID
+      // Add the review to Firestore
       db.collection('toilets')
         .doc(ID)
         .get()
         .then((toiletDoc) => {
-          const toiletID = toiletDoc.id; // Retrieve the toilet ID
-          // Add the review to Firestore with the corresponding toilet ID
+          const toiletID = toiletDoc.id; 
           db.collection('reviews')
             .add({
               userId: userId,
               userName: userName,
-              toiletID: toiletID, // Use the retrieved toilet ID here
+              toiletID: toiletID, 
               cleanlinessRatings: cleanlinessRatings.join(','),
               odourRatings: odourRatings.join(','),
               safenessRatings: safenessRatings.join(','),
@@ -51,8 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
               comment: comment,
             })
             .then((docRef) => {
-              console.log('Review added with ID: ', docRef.id);
-              // Clear the textarea and ratings after adding the review
+              // Clear the text area and ratings after adding the review
               commentTextarea.value = '';
               clearRatings('rating1');
               clearRatings('rating2');
@@ -72,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// Function to clear ratings
 function clearRatings(radioGroupName) {
   const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);
   selectedRadios.forEach((radio) => {
@@ -79,18 +78,17 @@ function clearRatings(radioGroupName) {
   });
 }
 
+// Function to get ratings
 function getRatings(radioGroupName) {
   const selectedRadios = document.querySelectorAll(`input[name="${radioGroupName}"]:checked`);
   return Array.from(selectedRadios, (radio) => radio.value);
 }
 
-// Add an event listener to the close button of the success modal
+//Send user back to toilet page after submitting review
 const closeSuccessModalButton = document.getElementById('closeSuccessModalButton');
 closeSuccessModalButton.addEventListener('click', () => {
-  // Get the toilet ID from the URL
   const params = new URLSearchParams(window.location.search);
   const toiletID = params.get('docID');
 
-  // Redirect to the toilets page with the toilet ID as a query parameter
-  window.location.href = `toilet.html?docID=${toiletID}`; // Replace with your toilets page URL
+  window.location.href = `toilet.html?docID=${toiletID}`; 
 });

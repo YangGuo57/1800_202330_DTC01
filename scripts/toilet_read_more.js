@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+const toiletID = getToiletIdFromUrl();
+
+// Get toilet ID from URL
+function getToiletIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('docID'); // "docID" is the name of the query parameter
+}
+    
 // FOR SHOWING TOILET READ MORE INFO
 function displayToiletInfo() {
-    let params = new URL(window.location.href); //get URL of search bar
-    let ID = params.searchParams.get("docID"); //get value for key "id"
-
     db.collection("toilets")
-        .doc(ID)
+        .doc(toiletID)
         .get()
         .then(doc => {
             toiletName = doc.data().name;
@@ -18,8 +24,8 @@ function displayToiletInfo() {
 
             document.getElementById("toiletName").innerHTML = toiletName;
             document.getElementById("details-go-here").innerHTML = toiletLocation + "<br>" + toiletAddress + "<br>" + toiletType + "<br>" + "Wheelchair Access: " + toiletWheelchair + "<br>" + "Summer Hours: " + toiletSummer + "<br>" + "Winter Hours: " + toiletWinter;
-            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + ID + "' class='btn review'>Add Review</a>";
-            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + ID + "' class='btn review'>All Reviews</a>";
+            document.getElementById("add-review").innerHTML = "<a href='write_review.html?docID=" + toiletID + "' class='btn review'>Add Review</a>";
+            document.getElementById("more-review").innerHTML = "<a href='review.html?toiletID=" + toiletID + "' class='btn review'>All Reviews</a>";
         });
 }
 displayToiletInfo();
@@ -54,29 +60,20 @@ function displayReviews(toiletID) {
             console.error("Error fetching reviews:", error);
         });
 }
+displayReviews(toiletID);
 
+// Calculate average rating for each review
 function calculateAverageRating(review) {
     const total = parseInt(review.accessibleRatings) + parseInt(review.cleanlinessRatings) +
                   parseInt(review.odourRatings) + parseInt(review.safenessRatings);
-    return total / 4; // Assuming there are 4 rating categories
+    return total / 4;
 }
 
+// Display star rating for each review
 function getStarRating(rating) {
     let stars = "";
     for (let i = 1; i <= 5; i++) {
         stars += i <= rating ? "★" : "☆"; // Full star for each whole number rating
     }
     return stars;
-}
-
-function getToiletIdFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('docID'); // "docID" is the name of the query parameter
-}
-
-const toiletID = getToiletIdFromUrl();
-console.log(toiletID); // This will log the toilet ID from the URL
-
-// Now you can use toiletID to display reviews or any other related data
-displayReviews(toiletID);
-});
+}});

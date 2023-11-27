@@ -32,7 +32,6 @@ function displayAverageRating(toiletID) {
 // Display toilet reviews according to toiletID
 function displayReviews(toiletID) {
   const reviewsContainer = document.getElementById('reviewsContainer');
-
   const db = firebase.firestore();
 
   db.collection('reviews')
@@ -77,6 +76,7 @@ function displayReviews(toiletID) {
     });
 }
 
+// Calculate average rating for each category
 function calculateAverageRating(querySnapshot, category) {
   let totalRating = 0;
   let reviewCount = 0;
@@ -139,7 +139,7 @@ function displayDynamicProgressBars(querySnapshot) {
   });
 }
 
-
+// Displays reviews and average rating on page load
 document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
   const toiletID = urlParams.get('toiletID');
@@ -152,12 +152,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Calculate average rating for each category
 function calculateAverageRatingEach(review) {
   const total = parseInt(review.accessibleRatings) + parseInt(review.cleanlinessRatings) +
                 parseInt(review.odourRatings) + parseInt(review.safenessRatings);
   return total / 4; 
 }
 
+// Display star rating for each review
 function getStarRatingEach(rating) {
   let stars = "";
   for (let i = 1; i <= 5; i++) {
