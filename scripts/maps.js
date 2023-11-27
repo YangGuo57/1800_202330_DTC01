@@ -16,7 +16,9 @@ function createMyLocationControl() {
       this._button.onclick = function () {
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(function (position) {
-            map.flyTo({
+            const userLocation = [position.coords.longitude, position.coords.latitude];
+            directionsControl.setOrigin(userLocation);
+          map.flyTo({
               center: [position.coords.longitude, position.coords.latitude],
               zoom: 15
             });
@@ -40,6 +42,15 @@ function createMyLocationControl() {
   };
 }
 
+function createDirectionsControl() {
+  return new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    unit: 'metric',
+    profile: 'mapbox/walking',
+    controls: {}
+  });
+}
+
 
 function initializeMap(center) {
   const map = new mapboxgl.Map({
@@ -47,6 +58,9 @@ function initializeMap(center) {
     style: 'mapbox://styles/mapbox/streets-v12',
     center: center,
     zoom: 15
+
+    
+
   });
 
   map.addControl(
@@ -78,6 +92,11 @@ function initializeMap(center) {
           let marker = new mapboxgl.Marker()
             .setLngLat(markerLocation)
             .addTo(map);
+          
+          marker.getElement().addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent further event propagation
+            directionsControl.setDestination(markerLocation);
+          });
 
           const popup = new mapboxgl.Popup()
             .setHTML(`
@@ -124,11 +143,24 @@ function initializeMap(center) {
         }
       });
   });
+
+  var directionsControl = createDirectionsControl();
+  map.addControl(directionsControl, 'top-left');
+
+  if (setUserLocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const userLocation = [position.coords.longitude, position.coords.latitude];
+      directionsControl.setOrigin(userLocation);
+      map.flyTo({ center: userLocation, zoom: 15 });
+    }, function (error) {
+      console.error('Error occurred while retrieving location:', error);
+    });
+  }
 }
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(function (position) {
-    initializeMap([position.coords.longitude, position.coords.latitude]);
+    initializeMap([position.coords.longitude, position.coords.latitude], true);
   }, function (error) {
     console.error('Error occurred while retrieving location:', error);
     initializeMap(defaultCenter);
