@@ -37,3 +37,7 @@ body {
 footer .container p {
   color: white;
 }
+
+.padding {
+  padding: 33px;
+}
