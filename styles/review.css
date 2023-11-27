@@ -51,10 +51,41 @@
   text-align: left;
 }
 
+.mb-3 {
+  text-align: left;
+  padding-top: 10px;
+}
+
 .card {
   background-color: #ffffff !important;
+  border-radius: 20px;
 }
 
 .navbar {
   align-items: start !important;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.name {
+  padding: 10px 10px 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.top {
+  display: flex;
+}
+
+.rating {
+font-size: 30px;
+padding-left: 30px;
+color: #0077cc
+}
+
+.padding {
+  padding: 33px;
 }

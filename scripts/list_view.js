@@ -1,13 +1,10 @@
 var currentUser;
 
 function doAll() {
-    console.log("doAll function called");
     firebase.auth().onAuthStateChanged(user => {
-        console.log("Auth state changed");
         if (user) {
             currentUser = user.uid;
             navigator.geolocation.getCurrentPosition(position => {
-                console.log("Geolocation success");
                 const userLocation = {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
@@ -15,7 +12,6 @@ function doAll() {
                 displayCardsDynamically("toilets", userLocation);
             }, () => {
                 console.log("Error getting location");
-                // Handle error or proceed without location
                 displayCardsDynamically("toilets");
             });
         } else {
@@ -24,7 +20,6 @@ function doAll() {
         }
     });
 }
-
 doAll();
 
 //Shows a list view of all toilets
@@ -43,12 +38,10 @@ function displayCardsDynamically(collection, userLocation = null) {
                     distance: userLocation ? calculateDistance(userLocation, doc.data().lat, doc.data().lon) : null
                 };
                 toilets.push(toilet);
-                console.log(toilet.distance);
             });
 
             if (userLocation) {
                 toilets = toilets.sort((a, b) => a.distance - b.distance).slice(0, 10);
-
             }
 
             //create toilet cards
@@ -65,18 +58,15 @@ function displayCardsDynamically(collection, userLocation = null) {
 
                 newcard.querySelector('button').id = 'favourite-' + toilet.docID;
                 newcard.querySelector('button').onclick = () => updateFavourite(toilet.docID);
-                console.log(toilet.docID)
+
                 db.collection("favourites")
                     .where("user", "==", currentUser)
                     .where("toiletID", "==", toilet.docID)
                     .get()
                     .then(querySnapshot => {
                         if (!querySnapshot.empty) {
-                            console.log("toilet is favourited");
                             document.getElementById('favourite-' + toilet.docID).classList.add("favourited");
-                        } else {
-                            console.log("toilet is not favourited");
-                        }
+                        } 
                     });
                 document.getElementById(collection + "-go-here").appendChild(newcard);
             });
@@ -86,6 +76,7 @@ function displayCardsDynamically(collection, userLocation = null) {
         });
 }
 
+//Calculates the distance between the user and the toilet
 function calculateDistance(userLocation, lat, lon) {
     const R = 6371; // Radius of the Earth in kilometers
     const dLat = degreesToRadians(lat - userLocation.latitude);
@@ -103,23 +94,19 @@ function degreesToRadians(degrees) {
     return degrees * (Math.PI / 180);
 }
 
-
 //This will toggle the favourites button and add and delete from Firestore
 function updateFavourite(docID) {
     const buttonID = document.getElementById('favourite-' + docID)
-    console.log(buttonID);
     buttonID.classList.toggle("favourited");
 
     if (buttonID.classList.contains("favourited")) {
         // Add the toilet to favourites
-        console.log("adding to favourites");
         db.collection("favourites").add({
             user: currentUser,
             toiletID: docID
         });
     } else {
         // Remove the toilet from favourites
-        console.log("removing from favourites");
         db.collection("favourites")
             .where("user", "==", currentUser)
             .where("toiletID", "==", docID)

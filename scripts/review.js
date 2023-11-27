@@ -32,7 +32,6 @@ function displayAverageRating(toiletID) {
 // Display toilet reviews according to toiletID
 function displayReviews(toiletID) {
   const reviewsContainer = document.getElementById('reviewsContainer');
-
   const db = firebase.firestore();
 
   db.collection('reviews')
@@ -43,26 +42,25 @@ function displayReviews(toiletID) {
 
       querySnapshot.forEach((doc) => {
         const reviewData = doc.data();
+        const averageRating = calculateAverageRatingEach(reviewData);
+        const starRating = getStarRatingEach(averageRating);
 
         const reviewElement = document.createElement('div');
-        reviewElement.classList.add('col-md-4', 'mb-4', 'text-center', 'review');
+        reviewElement.classList.add('col-md-4', 'mb-2', 'text-center', 'review');
 
         reviewElement.innerHTML = `
           <div class="card">
             <div class="card-body py-01 mt-0">
-              <div class="d-flex align-items-left mb-">
-                <div class="user-icon"><img src="../images/user-icon.png" class="rounded-circle shadow-1-strong" width="100" height="100" /></div>
-                <div class="d-flex flex-column ">
-                  <p class="name">${reviewData.userName}</p>
-                  <div class="stars-days">
-                    <div class="days">
-                      <p>Posted ${reviewData.daysAgo} days ago</p>
-                    </div>
-                  </div>
-                </div>
+              <div class="top">
+                <div class="user-icon"><img src="../images/user-icon.png" class="rounded-circle"/></div>
+                <div class="name">${reviewData.userName}</div>
+                <div class="rating">${starRating}</div>
               </div>
+              <p class="mb-3">
+                <b>${reviewData.title}</b>
+              </p>
               <p class="mb-2">
-                <i class="fas fa-quote-left pe-2"></i>${reviewData.comment}
+                ${reviewData.comment}
               </p>
             </div>
           </div>
@@ -78,6 +76,7 @@ function displayReviews(toiletID) {
     });
 }
 
+// Calculate average rating for each category
 function calculateAverageRating(querySnapshot, category) {
   let totalRating = 0;
   let reviewCount = 0;
@@ -140,7 +139,7 @@ function displayDynamicProgressBars(querySnapshot) {
   });
 }
 
-
+// Displays reviews and average rating on page load
 document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
   const toiletID = urlParams.get('toiletID');
@@ -152,3 +151,19 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('ToiletID not found in URL or write review button not found.');
   }
 });
+
+// Calculate average rating for each category
+function calculateAverageRatingEach(review) {
+  const total = parseInt(review.accessibleRatings) + parseInt(review.cleanlinessRatings) +
+                parseInt(review.odourRatings) + parseInt(review.safenessRatings);
+  return total / 4; 
+}
+
+// Display star rating for each review
+function getStarRatingEach(rating) {
+  let stars = "";
+  for (let i = 1; i <= 5; i++) {
+      stars += i <= rating ? "★" : "☆"; 
+  }
+  return stars;
+}

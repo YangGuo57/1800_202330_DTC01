@@ -1,7 +1,11 @@
-h1, label {
-    color: #DAFFFB;
-}
-
 #emailInput {
     background-color: rgb(178, 178, 178);
+}
+
+label {
+    color: white;
+}
+
+.padding {
+    padding: 33px;
 }

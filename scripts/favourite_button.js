@@ -8,7 +8,6 @@ function doAll() {
             const toiletDocID = localStorage.getItem("toiletDocID");
             checkFavourited(toiletDocID);
         } else {
-            console.log("No user is signed in");
             window.location.href = "login.html";
         }
     });
@@ -25,10 +24,8 @@ function checkFavourited(toiletDocID) {
         .get()
         .then(querySnapshot => {
             if (!querySnapshot.empty) {
-                console.log("toilet is favourited");
                 toiletButton.classList.add("favourited");
             } else {
-                console.log("toilet is not favourited");
                 toiletButton.classList.remove("favourited");
             }
         });
@@ -36,9 +33,7 @@ function checkFavourited(toiletDocID) {
 
 //This will toggle the favourites button and add and delete from Firestore
 document.getElementById("favourite-button").addEventListener("click", function () {
-
         const toiletDocID = localStorage.getItem("toiletDocID");
-
         this.classList.toggle("favourited");
 
         if (this.classList.contains("favourited")) {

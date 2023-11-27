@@ -55,11 +55,17 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- Body html goes here -->
+    <div class="padding"></div>
     <div id="container">
         <div id="container">
             <div class="toilet-card">
-                <h5 id="toiletName"></h5>
-                <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button>
+                <div class="top-area">
+                    <h5 id="toiletName"></h5>
+                    <button id="favourite-button" class="material-symbols-outlined fav-button">favorite</button><br>
+                </div>
+                <a class="btn card-href" id="navigate"><span class="material-icons direction">
+                    directions
+                </span></a>
                 <div id="details-go-here"></div>
                 <div class="review-buttons">
                     <div id="more-review"></div>
@@ -74,8 +80,12 @@
 
     <template id="reviewTemplate">
         <div class="container review-card">
-            <h5 class="review-user"></h5>
-            <div class="review-rating"></div>
+            <div class="review-head">
+                <div class="user-icon"><img src="../images/user-icon.png" class="rounded-circle"/></div>
+                <h5 class="review-user"></h5>
+                <div class="review-rating"></div>
+            </div>
+            <div class="review-title"></div>
             <div class="review-comment"></div>
         </div>
         </div>

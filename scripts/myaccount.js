@@ -1,3 +1,4 @@
+// if user is logged in, show user information fields
 var currentUser;              
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
@@ -29,10 +30,12 @@ function populateUserInfo() {
 }
 populateUserInfo();
 
+// let's users edit their information
 function editUserInfo() {
     document.getElementById('personalInfoFields').disabled = false;
 }
 
+// saves the user information to firestore
 function saveUserInfo() {
     userName = document.getElementById('nameInput').value;
     userCity = document.getElementById('cityInput').value;
@@ -49,5 +52,4 @@ function saveUserInfo() {
 
     //disable the document
     document.getElementById('personalInfoFields').disabled = true;
-
 }
