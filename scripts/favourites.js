@@ -45,6 +45,7 @@ async function displayCardsDynamically(currentUser, userLocation = null) {
             const toiletDoc = await db.collection("toilets").doc(toiletID).get();
 
             const toilet = {
+                id: toiletDoc.id,
                 title: toiletDoc.data().name,
                 location: toiletDoc.data().geo_local_area,
                 disability: toiletDoc.data().wheel_access,
@@ -58,7 +59,7 @@ async function displayCardsDynamically(currentUser, userLocation = null) {
         }
 
         for (const toilet of toilets) {
-            toiletID = toilet.docID;
+            const toiletID = toilet.id;
             const newcard = cardTemplate.content.cloneNode(true);
 
             if (toilet.disability == "Yes") { toilet.disability = '<span class="material-symbols-outlined">accessible</span>' }
