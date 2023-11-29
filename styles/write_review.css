@@ -131,3 +131,10 @@
 .padding {
   padding: 30px;
 }
+
+textarea.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgrey !important;
+  opacity: 1;
+  /* Firefox */
+}
