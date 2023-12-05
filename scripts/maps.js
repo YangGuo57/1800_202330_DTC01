@@ -30,10 +30,9 @@ function createMyLocationControl() {
 function setUserLocation() {
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      const userLocation = [position.coords.longitude, position.coords.latitude];
+      userLocation = [position.coords.longitude, position.coords.latitude];
       map.flyTo({ center: userLocation, zoom: 15 });
-      new mapboxgl.Marker({ color: '#FF8C00' }).setLngLat(userLocation).addTo(map);
-      directionsControl.setOrigin(userLocation);
+      new mapboxgl.Marker({ color: 'navy' }).setLngLat(userLocation).addTo(map);
     }, function (error) {
       console.error('Error occurred while retrieving location:', error);
     });
@@ -41,6 +40,7 @@ function setUserLocation() {
     console.log('Geolocation is not supported by this browser.');
   }
 }
+
 
 function createDirectionsControl() {
   const directions = new MapboxDirections({
@@ -62,7 +62,7 @@ function initializeMap(center) {
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v12',
     center: center,
-    zoom: 15
+    zoom: 14,
   });
 
   map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
@@ -73,8 +73,8 @@ function initializeMap(center) {
 
   map.on('load', () => {
     loadToiletMarkers();
-     if ('geolocation' in navigator) {
-      setUserLocation(); // Set user location on map load
+    if ('geolocation' in navigator) {
+      setUserLocation();
     }
   });
 }
@@ -110,13 +110,28 @@ document.addEventListener('click', function(event) {
     event.stopPropagation();
     event.preventDefault();
 
-
     const lon = parseFloat(navButton.getAttribute('data-lon'));
     const lat = parseFloat(navButton.getAttribute('data-lat'));
-    desiredDestination = [lon, lat];
+    const newDestination = [lon, lat];
 
-    if (directionsControl) {
-      directionsControl.setDestination(desiredDestination);
+    // Check if the new destination is different from the previous one
+    if (!desiredDestination || desiredDestination[0] !== newDestination[0] || desiredDestination[1] !== newDestination[1]) {
+      desiredDestination = newDestination;
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const userLocation = [position.coords.longitude, position.coords.latitude];
+
+          if (directionsControl) {
+            directionsControl.setOrigin(userLocation); // Set user's current location as origin
+            directionsControl.setDestination(desiredDestination); // Set new location as destination
+          }
+        }, function (error) {
+          console.error('Error occurred while retrieving location:', error);
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
     }
   }
 });
@@ -133,3 +148,4 @@ if ('geolocation' in navigator) {
   console.log('Geolocation is not supported by this browser.');
   initializeMap(defaultCenter);
 }
+
