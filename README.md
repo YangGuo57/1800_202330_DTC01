@@ -21,8 +21,6 @@ Our team DTC01 is developing the FlushFinder to help everyone to find a public w
 
 ## Contributor Bios
 
-List team members and/or short bio's here...
-
 - Hi, my name is Yang! I am so excited to start this project! Let's go FlushFinder!
 - Hi, my name is Patricia and I am excited to share with everyone my vision for a toilet-ful Vancouver!
 - Hi, my name is Shaun. I am passionate about the accessibility of public washrooms!
@@ -62,7 +60,6 @@ Here are some known bugs:
 
 - Once you choose a location and ask to be directed there, when you click on another pin you are immediately directed there without clicking the direction
 - The list-view takes some time to load because it does the calculation based on the users location for all washrooms in the database before sorting.
-- The favourites
 
 ## Features for Future
 
@@ -142,6 +139,6 @@ Top level of project folder:
 
 ## Contact
 
-- Patricia Lo -
+- Patricia Lo - pkwlo1992@gmail.com
 - Shaun Sy - ssy7@my.bcit.ca
 - Yang Guo - guoyang711@gmail.com
