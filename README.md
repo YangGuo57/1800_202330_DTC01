@@ -144,4 +144,4 @@ Top level of project folder:
 
 - Patricia Lo -
 - Shaun Sy - ssy7@my.bcit.ca
-- Yang Guo -
+- Yang Guo - guoyang711@gmail.com
