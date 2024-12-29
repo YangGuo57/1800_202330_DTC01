@@ -15,6 +15,8 @@
 
 FlushFinder
 
+<img width="377" alt="image" src="https://github.com/user-attachments/assets/ade30698-266f-4d6c-b14d-bf680f2da7e4" />
+
 ## Project Description
 
 Our team DTC01 is developing the FlushFinder to help everyone to find a public washroom by letting them use an app that maps out the public toilets in the city.
